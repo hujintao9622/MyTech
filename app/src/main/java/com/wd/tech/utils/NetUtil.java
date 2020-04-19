@@ -94,7 +94,7 @@ public class NetUtil {
         //retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okhttp)
-                .baseUrl(MyUrls.BASE_URL)
+                .baseUrl(MyUrls.url)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
