@@ -20,7 +20,7 @@ public class ScroMenu extends HorizontalScrollView {
     private LinearLayout mWrpper;
     //水平线性布局的左侧菜单menu
     private ViewGroup mMenu;
-    //水平先行布局的右侧线性布局
+    //水平先行布局的右侧布局
     private ViewGroup mContent;
     //屏幕的宽
     private int mScreenWidth;
@@ -48,7 +48,6 @@ public class ScroMenu extends HorizontalScrollView {
         //把dp转换成px
         mMenuRightPadding=(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,
                 context.getResources().getDisplayMetrics());
-
     }
 
 

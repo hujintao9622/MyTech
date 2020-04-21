@@ -23,6 +23,8 @@ public interface TechContract {
         void getNoParams(String url, Class cls);
         //get有参
         void getDoParams(String url, Class cls, HashMap<String, Object> map);
+        //get头参
+        void getHeadParams(String url, Class cls, HashMap<String, Object> map);
         //post 头像
         void postDoHeadPic(String url, Class cls, MultipartBody.Part image);
         //post无参
@@ -43,6 +45,8 @@ public interface TechContract {
         void getNoParams(String url, Class cls, IModelCallback iModelCallback);
         //get有参
         void getDoParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
+        //get头参
+        void getHeadParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
         //post 头像
         void postDoHeadPic(String url, Class cls, MultipartBody.Part image, IModelCallback iModelCallback);
         //post无参

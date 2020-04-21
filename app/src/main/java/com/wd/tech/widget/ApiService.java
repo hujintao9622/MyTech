@@ -10,6 +10,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -28,6 +29,8 @@ public interface ApiService {
     Observable<ResponseBody> getNoParams(@Url String url);
     @GET //get有参
     Observable<ResponseBody> getDoParams(@Url String url, @QueryMap HashMap<String, Object> map);
+    @GET //get 头参
+    Observable<ResponseBody> getHeadParams(@Url String url, @HeaderMap HashMap<String,Object> map);
     @POST //post头像
     @Multipart
     Observable<ResponseBody> postDoHeadPic(@Url String url, @Part MultipartBody.Part img);

@@ -14,10 +14,12 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.wd.tech.R;
+import com.wd.tech.utils.cache.CacheIntercept;
 import com.wd.tech.widget.ApiService;
 import com.wd.tech.widget.MyApp;
 import com.wd.tech.widget.MyUrls;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +28,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -57,9 +60,9 @@ public class NetUtil {
         return Holder.NET_UTIL;
     }
     private NetUtil(){
-        /*//缓存文件
+        //缓存文件
         File file = new File(MyApp.mContext.getCacheDir().getAbsolutePath(), "http");
-        Cache cache=new Cache(file,1024*1024*10);*/
+        Cache cache=new Cache(file,1024*1024*10);
         //拦截器
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -84,9 +87,9 @@ public class NetUtil {
 
                     }
                 })
-                /* //添加缓存
+                 //添加缓存
                  .addInterceptor(new CacheIntercept())
-                 .cache(cache)*/
+                 .cache(cache)
                 .readTimeout(5, TimeUnit.SECONDS)
                 .writeTimeout(5, TimeUnit.SECONDS)
                 .connectTimeout(5, TimeUnit.SECONDS)
@@ -155,6 +158,38 @@ public class NetUtil {
     //get有参
     public void getDoParams(String url, final Class cls, HashMap<String,Object> map, final ICallback iCallback){
         api.getDoParams(url,map).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            iCallback.onSuccess(o);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    //get头参
+    public void getHeadParams(String url, final Class cls, HashMap<String,Object> map, final ICallback iCallback){
+        api.getHeadParams(url,map).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {
                     @Override

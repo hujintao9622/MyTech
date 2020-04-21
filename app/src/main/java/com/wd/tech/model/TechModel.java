@@ -44,6 +44,21 @@ public class TechModel implements TechContract.IModel {
     }
 
     @Override
+    public void getHeadParams(String url, Class cls, HashMap<String, Object> map, final TechContract.IModelCallback iModelCallback) {
+        NetUtil.getInstance().getHeadParams(url, cls, map,new NetUtil.ICallback() {
+            @Override
+            public void onSuccess(Object o) {
+                iModelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                iModelCallback.onFailure(e);
+            }
+        });
+    }
+
+    @Override
     public void postDoHeadPic(String url, Class cls, MultipartBody.Part image, final TechContract.IModelCallback iModelCallback) {
         NetUtil.getInstance().postDoHeadPic(url, cls, image,new NetUtil.ICallback() {
             @Override
