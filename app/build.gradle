@@ -60,4 +60,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
 //TabLayout 依赖
     implementation 'com.google.android.material:material:1.0.0'
+    // if u use AndroidX, use the following,网络工具类库
+    implementation 'com.blankj:utilcodex:1.25.9'
+    //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
 }

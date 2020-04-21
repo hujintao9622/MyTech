@@ -1,74 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/login"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context=".view.activity.login.RegisterActivity">
-    <ImageView
-        android:layout_width="@dimen/dp_64"
-        android:src="@drawable/logo_xxhdpi"
-        android:layout_marginTop="@dimen/dp_128"
-        android:layout_height="@dimen/dp_64"/>
-        <EditText
-            android:drawableLeft="@drawable/register_icon_name_n_xxhdpi"
-            android:layout_width="@dimen/dp_260"
-            android:hint="昵称"
-            android:paddingLeft="@dimen/dp_5"
-            android:textColor="#eeeeee"
-            android:textColorHint="#eeeeee"
-            android:layout_marginTop="@dimen/dp_40"
-            android:id="@+id/register_name"
-            android:background="@drawable/bottomb1"
-            android:layout_height="@dimen/dp_50">
-        </EditText>
-        <EditText
-            android:layout_width="@dimen/dp_260"
-            android:hint="手机号"
-            android:drawableLeft="@drawable/register_icon_phone_n_xxhdpi"
-            android:background="@drawable/bottomb1"
-            android:textColorHint="#eeeeee"
-            android:textColor="#eeeeee"
-            android:paddingLeft="@dimen/dp_5"
-            android:id="@+id/register_phone"
-            android:layout_marginTop="@dimen/dp_9"
-            android:layout_height="@dimen/dp_50">
-        </EditText>
 
-
-        <EditText
-            android:layout_width="@dimen/dp_260"
-            android:drawableLeft="@drawable/register_icon_lock_n_xxhdpi"
-            android:hint="登录密码"
-            android:textColor="#eeeeee"
-            android:paddingLeft="@dimen/dp_5"
-            android:background="@drawable/bottomb1"
-            android:textColorHint="#eeeeee"
-            android:layout_marginTop="@dimen/dp_9"
-            android:id="@+id/register_pwd"
-            android:drawableRight="@drawable/login_icon_eye_n_hdhpi"
-            android:layout_height="@dimen/dp_50">
-
-        </EditText>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="短信验证登录"
-        android:layout_marginTop="10dp"
-        android:id="@+id/login_register"
-        android:layout_marginLeft="100dp"
-        android:textColor="#ffffff"/>
-    <Button
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:background="#20affa"
-        android:text="注册"
-        android:textSize="18dp"
-        android:layout_marginTop="@dimen/dp_100"
-        android:id="@+id/register_bt"
-        android:textColor="#ffffff"/>
+        android:text="注册界面" />
+
 </LinearLayout>
