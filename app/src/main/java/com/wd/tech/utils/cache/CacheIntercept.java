@@ -1,7 +1,7 @@
-package com.bw.movie.widget.cache;
+package com.wd.tech.utils.cache;
 
-import com.bw.movie.util.NetUtil;
-import com.bw.movie.widget.MyApplication;
+import com.wd.tech.utils.NetUtil;
+import com.wd.tech.widget.MyApp;
 
 import java.io.IOException;
 
@@ -9,7 +9,6 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-
 
 /**
  * date:2020/4/12 0012
@@ -26,7 +25,7 @@ public class CacheIntercept implements Interceptor {
         //拿到request
         Request request = chain.request();
         //判断有无网
-        if (NetUtil.hasNet(MyApplication.getmContext())){
+        if (NetUtil.hasNet(MyApp.getmContext())){
             request= request.newBuilder()
                     //只能请求网络
                     .cacheControl(CacheControl.FORCE_NETWORK)
@@ -39,7 +38,7 @@ public class CacheIntercept implements Interceptor {
         }
         //拿到response重构 手动缓存
         Response response = chain.proceed(request);
-        if (NetUtil.hasNet(MyApplication.getmContext())){
+        if (NetUtil.hasNet(MyApp.getmContext())){
             //设置缓存时间
             response = response.newBuilder()
                     .removeHeader("Pragma")
