@@ -16,19 +16,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
-import com.wd.tech.model.bean.UserInfoBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.utils.NetUtil;
 import com.wd.tech.view.activity.login.LoginActivity;
+import com.wd.tech.view.activity.login.RegisterActivity;
+import com.wd.tech.view.activity.my.SheActivity;
 import com.wd.tech.view.fragment.CommunityFragment;
 import com.wd.tech.view.fragment.ConsultFragment;
 import com.wd.tech.view.fragment.InfoFragment;
-import com.wd.tech.widget.MyUrls;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,8 +46,8 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     LinearLayout ll;
     @BindView(R.id.bgz)
     ImageView bgz;
-    @BindView(R.id.headPic)
-    ImageView headPic;
+    @BindView(R.id.headPic1)
+    ImageView headPic1;
     @BindView(R.id.name)
     TextView name;
     @BindView(R.id.dersign)
@@ -83,7 +82,6 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     ImageView loginIv;
     @BindView(R.id.login)
     TextView login;
-    private SharedPreferences sp;
 
     @Override
     protected void initData() {
@@ -140,27 +138,26 @@ public class MainActivity extends BaseActivity<TechPresenter> {
         //默认页面
         rg.check(rg.getChildAt(0).getId());
         vp.setCurrentItem(0);
-        sp = getSharedPreferences("login.dp", MODE_PRIVATE);
-        if (sp.getBoolean("b",false)){
-            ll.setVisibility(View.GONE);
-            rl.setVisibility(View.VISIBLE);
-            int uid = sp.getInt("uid", -1);
-            String sid = sp.getString("sid", "");
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("userId",uid);
-            map.put("sessionId",sid);
-            mPresenter.getHeadParams(MyUrls.BASE_BYID, UserInfoBean.class,map);
-        }else {
-            ll.setVisibility(View.VISIBLE);
-            rl.setVisibility(View.GONE);
-        }
+        //点击登录
     }
 
     @Override
     protected void initView() {
         //隐藏标题
         getSupportActionBar().hide();
-
+        SharedPreferences sp = getSharedPreferences("login.dp", MODE_PRIVATE);
+        boolean b = sp.getBoolean("b", false);
+        if (!b) {
+            ll.setVisibility(View.VISIBLE);
+            rl.setVisibility(View.INVISIBLE);
+        } else {
+            ll.setVisibility(View.INVISIBLE);
+            rl.setVisibility(View.VISIBLE);
+            String headPic = sp.getString("headPic", "");
+            String nickName = sp.getString("nickName", "");
+            Glide.with(this).load(headPic).circleCrop().into(headPic1);
+            name.setText(nickName);
+        }
     }
 
     @Override
@@ -180,12 +177,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
 
     @Override
     public void onSuccess(Object o) {
-        if (o instanceof UserInfoBean&& TextUtils.equals("0000",((UserInfoBean) o).getStatus())){
-            UserInfoBean.ResultBean result = ((UserInfoBean) o).getResult();
-            NetUtil.getInstance().getCiclePhoto(result.getHeadPic(),headPic);
-            name.setText(result.getNickName());
-            dersign.setText(result.getSignature());
-        }
+
     }
 
     @Override
@@ -194,12 +186,17 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     }
 
 
-    @OnClick({R.id.login_iv, R.id.login})
+    @OnClick({R.id.login_iv, R.id.login, R.id.she})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_iv:
-            case R.id.login:
                 startActivity(this, LoginActivity.class);
+                break;
+            case R.id.login:
+                startActivity(this, RegisterActivity.class);
+                break;
+            case R.id.she:
+                startActivity(this, SheActivity.class);
                 break;
         }
     }

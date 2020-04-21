@@ -1,10 +1,16 @@
 package com.wd.tech.view.activity.login;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,28 +33,32 @@ import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<TechPresenter> {
 
-
-    @BindView(R.id.login_phone)
-    EditText loginPhone;
-    @BindView(R.id.login_pwd)
-    EditText loginPwd;
-    @BindView(R.id.login_register)
-    TextView loginRegister;
-    @BindView(R.id.login_bt)
-    Button loginBt;
-    @BindView(R.id.login_weixin)
-    ImageView loginWeixin;
-    @BindView(R.id.login_face)
-    ImageView loginFace;
+    @BindView(R.id.et_loginPhone)
+    EditText etLoginPhone;
+    @BindView(R.id.et_loginPwd)
+    EditText etLoginPwd;
+    @BindView(R.id.img_loginEye)
+    CheckBox imgLoginEye;
     private SharedPreferences sp;
 
     @Override
     protected void initData() {
-
+        imgLoginEye.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    // 如果选中，显示密码
+                    imgLoginEye.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                else
+                    // 否则隐藏密码
+                    imgLoginEye.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        });
     }
 
     @Override
     protected void initView() {
+        //隐藏标题栏
         getSupportActionBar().hide();
         sp = getSharedPreferences("login.dp", MODE_PRIVATE);
     }
@@ -71,56 +81,55 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     @Override
     public void onSuccess(Object o) {
         if (o instanceof LoginBean && TextUtils.equals("0000", ((LoginBean) o).getStatus())) {
-            SharedPreferences.Editor edit = sp.edit();
-            edit.putBoolean("b", true);
-            edit.putInt("uid", ((LoginBean) o).getResult().getUserId());
-            edit.putString("sid", ((LoginBean) o).getResult().getSessionId());
-            Toast.makeText(this, ((LoginBean) o).getMessage(), Toast.LENGTH_SHORT).show();
-            edit.commit();
-            startActivity(LoginActivity.this, MainActivity.class);
+            LoginBean.ResultBean resultBean = ((LoginBean) o).getResult();
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("headPic", resultBean.getHeadPic());
+            editor.putString("nickName", resultBean.getNickName());
+            editor.putInt("userId", resultBean.getUserId());
+            editor.putString("sessionId", resultBean.getSessionId());
+            editor.putBoolean("b", true);
+            editor.commit();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("login", true);
+            startActivity(intent);
             finish();
-        }
+        } else
+            Toast.makeText(this, ((LoginBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    // 手机号正则表达式
+    public static boolean isMobileNO(String mobileNums) {
+        String telRegex = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";// "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
+        if (TextUtils.isEmpty(mobileNums))
+            return false;
+        else
+            return mobileNums.matches(telRegex);
     }
 
     @Override
     public void onFailure(Throwable e) {
+        Toast.makeText(this, e + "", Toast.LENGTH_SHORT).show();
+    }
+
+    // 登录监听
+    public void login(View view) throws Exception {
+        String phone = etLoginPhone.getText().toString().trim();
+        String pwd = etLoginPwd.getText().toString().trim();
+        String rsaPwd = RsaCoder.encryptByPublicKey(pwd);
+        if (isMobileNO(phone)) {
+            // 使用RSA公钥对密码加密
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("phone", phone);
+            map.put("pwd", rsaPwd);
+            mPresenter.postDoParams(MyUrls.BASE_LOGIN, LoginBean.class, map);
+        } else {
+            Toast.makeText(this, "格式不正确", Toast.LENGTH_SHORT).show();
+        }
 
     }
-    @OnClick({R.id.login_register, R.id.login_bt, R.id.login_weixin, R.id.login_face})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.login_register:
-                startActivity(LoginActivity.this,RegisterActivity.class);
-                break;
-            case R.id.login_bt:
-                String phon = loginPhone.getText().toString().trim();
-                String pw = loginPwd.getText().toString().trim();
-                boolean b = Pattern.matches("^1[3|5|7|8][0-9]{9}$", phon);
-                if (b){
-                    if (TextUtils.isEmpty(phon)||TextUtils.isEmpty(pw)){
-                        Toast.makeText(this, "账号或密码为空,请重新输入", Toast.LENGTH_SHORT).show();
-                        return;
-                    }else {
-                        try {
-                            String pwd = RsaCoder.encryptByPublicKey(pw);
-                            HashMap<String, Object> map = new HashMap<>();
-                            map.put("phone",phon);
-                            map.put("pwd",pwd);
-                            mPresenter.postDoParams(MyUrls.BASE_LOGIN, LoginBean.class,map);
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }else {
-                    Toast.makeText(this, "手机号不合法", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                break;
-            case R.id.login_weixin:
-                break;
-            case R.id.login_face:
-                break;
-        }
+    // 注册监听
+    public void register(View view) {
+        startActivity(this, RegisterActivity.class);
     }
 }
