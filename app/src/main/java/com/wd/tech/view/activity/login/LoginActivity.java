@@ -108,7 +108,7 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
 
     @Override
     public void onFailure(Throwable e) {
-        Toast.makeText(this, e + "", Toast.LENGTH_SHORT).show();
+
     }
 
     // 登录监听
