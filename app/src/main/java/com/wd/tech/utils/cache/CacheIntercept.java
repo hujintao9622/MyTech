@@ -1,7 +1,5 @@
 package com.wd.tech.utils.cache;
 
-
-
 import com.wd.tech.utils.NetUtil;
 import com.wd.tech.widget.MyApp;
 
@@ -11,7 +9,6 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-
 
 /**
  * date:2020/4/12 0012
