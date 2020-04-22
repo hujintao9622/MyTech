@@ -223,6 +223,38 @@ public class NetUtil {
                     }
                 });
     }
+    //get头参
+    public void getHeadParams(String url, final Class cls, HashMap<String,Object> map, final ICallback iCallback){
+        api.getHeadParams(url,map).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            iCallback.onSuccess(o);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
     //post头像
     public void postDoHeadPic(String url, final Class cls, MultipartBody.Part image, final ICallback iCallback){
         api.postDoHeadPic(url,image).subscribeOn(Schedulers.io())
