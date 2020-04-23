@@ -33,7 +33,7 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
     RadioGroup infoRg;
     @BindView(R.id.jia)
     ImageView jia;
-    @BindView(R.id.vp)
+    @BindView(R.id.info_vp)
     ViewPager vp;
 
     @Override

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
-import com.wd.tech.model.bean.LoginBean;
+import com.wd.tech.model.bean.login.LoginBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.RsaCoder;
 import com.wd.tech.view.activity.MainActivity;
