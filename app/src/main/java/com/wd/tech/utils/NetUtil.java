@@ -74,21 +74,21 @@ public class NetUtil {
     }
     private NetUtil(){
         try {
-            //创建证书对象，方便管理证书数据
-            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            keyStore.load(null);//初始化证书资源，首次是空
+                //创建证书对象，方便管理证书数据
+                KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+                keyStore.load(null);//初始化证书资源，首次是空
 
-            //校验证书，x.509协议，所有的证书都是通过x.509协议生成的
-            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-            X509Certificate certificate = (X509Certificate) certificateFactory.generateCertificate(MyApp.mContext.getResources().openRawResource(R.raw.server));
+                //校验证书，x.509协议，所有的证书都是通过x.509协议生成的
+                CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+                X509Certificate certificate = (X509Certificate) certificateFactory.generateCertificate(MyApp.mContext.getResources().openRawResource(R.raw.server));
 
-            //ssl协议入场，看看是不是符合ssl协议标准
-            SSLContext sc = SSLContext.getInstance("TLS");
-            //信任证书管理,这个是由我们自己生成的,信任我们自己的服务器证书
-            TrustManager tm = new MyTrustManager(certificate);
-            sc.init(null, new TrustManager[]{
-                    tm
-            }, null);
+                //ssl协议入场，看看是不是符合ssl协议标准
+                SSLContext sc = SSLContext.getInstance("TLS");
+                //信任证书管理,这个是由我们自己生成的,信任我们自己的服务器证书
+                TrustManager tm = new MyTrustManager(certificate);
+                sc.init(null, new TrustManager[]{
+                        tm
+                }, null);
 
             //缓存文件
             File file = new File(MyApp.mContext.getCacheDir().getAbsolutePath(), "http");

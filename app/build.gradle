@@ -64,4 +64,8 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.25.9'
     //1.0.5及以前版本的老用户升级需谨慎，API改动过大
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    //androidX 版本使用下面的依赖
+    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.8'
+    // RecyclerView的快速适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
 }
