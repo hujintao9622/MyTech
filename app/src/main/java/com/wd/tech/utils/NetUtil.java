@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -74,8 +75,8 @@ public class NetUtil {
         return Holder.NET_UTIL;
     }
     private NetUtil(){
-        try {
-            //创建证书对象，方便管理证书数据
+         try {
+           //创建证书对象，方便管理证书数据
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null);//初始化证书资源，首次是空
 
@@ -105,8 +106,8 @@ public class NetUtil {
                         public Response intercept(Chain chain) throws IOException {
                             SharedPreferences sp = MyApp.getmContext().getSharedPreferences("login.dp", MODE_PRIVATE);
                             if (sp.getBoolean("b",false)){
-                                sid = sp.getString("sid","");
-                                uid = sp.getInt("uid",-1);
+                                sid = sp.getString("sessionId","");
+                                uid = sp.getInt("userId",-1);
                                 Request request = chain.request().newBuilder()
                                         .addHeader("userId", uid+"")
                                         .addHeader("sessionId", sid)
@@ -351,6 +352,38 @@ public class NetUtil {
                     }
                 });
     }
+    //post有参
+    public void postHeadParams(String url, final Class cls, HashMap<String,Object> map,HashMap<String,Object> map1, final ICallback iCallback){
+        api.postHeadParams(url,map,map1).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            iCallback.onSuccess(o);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
     //put 无参
     public void putNoParams(String url,final Class cls,final ICallback iCallback){
         api.putNoParams(url).subscribeOn(Schedulers.io())
@@ -496,10 +529,13 @@ public class NetUtil {
         }
     }
 
-    /**
+
+
+/**
      * 实现了 X509TrustManager
      * 通过此类中的 checkServerTrusted 方法来确认服务器证书是否正确
      */
+
     static class MyTrustManager implements X509TrustManager {
         X509Certificate cert;
 
@@ -507,23 +543,27 @@ public class NetUtil {
             this.cert = cert;
         }
 
-        /**
+
+/**
          * 信任客户端的
          * @param chain
          * @param authType
          * @throws CertificateException
          */
+
         @Override
         public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
             // 我们在客户端只做服务器端证书校验。
         }
 
-        /**
+
+/**
          * 信任服务器的
          * @param chain
          * @param authType
          * @throws CertificateException
          */
+
         @Override
         public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
             // 确认服务器端证书和代码中 hard code 的 CRT 证书相同。
@@ -541,9 +581,11 @@ public class NetUtil {
     }
 
 
-    /**
+
+/**
      * 校验主机名
      */
+
     public static class TrustHostnameVerifier implements HostnameVerifier {
         @Override
         public boolean verify(String hostname, SSLSession session) {
@@ -554,5 +596,15 @@ public class NetUtil {
                 return false;
             }
         }
+    }
+
+
+    // 手机号正则表达式
+    public static boolean isMobileNO(String mobileNums) {
+        String telRegex = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";// "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
+        if (TextUtils.isEmpty(mobileNums))
+            return false;
+        else
+            return mobileNums.matches(telRegex);
     }
 }

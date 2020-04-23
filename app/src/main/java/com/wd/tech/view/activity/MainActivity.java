@@ -2,7 +2,6 @@ package com.wd.tech.view.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -21,7 +21,6 @@ import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.activity.login.LoginActivity;
-import com.wd.tech.view.activity.login.RegisterActivity;
 import com.wd.tech.view.activity.my.SheActivity;
 import com.wd.tech.view.fragment.CommunityFragment;
 import com.wd.tech.view.fragment.ConsultFragment;
@@ -82,6 +81,12 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     ImageView loginIv;
     @BindView(R.id.login)
     TextView login;
+    @BindView(R.id.cont)
+    LinearLayout cont;
+    @BindView(R.id.meun)
+    RelativeLayout meun;
+    @BindView(R.id.drawer)
+    DrawerLayout drawer;
 
     @Override
     protected void initData() {
@@ -138,25 +143,51 @@ public class MainActivity extends BaseActivity<TechPresenter> {
         //默认页面
         rg.check(rg.getChildAt(0).getId());
         vp.setCurrentItem(0);
-        //点击登录
     }
 
     @Override
     protected void initView() {
         //隐藏标题
         getSupportActionBar().hide();
+        //滑动监听
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                //主内容随着菜单移动
+                int width = drawerView.getWidth();
+                cont.setTranslationX(width*slideOffset);
+                //初始移动
+                double v = width * (1 - 0.618) * (1 - slideOffset);
+                meun.setPadding((int)v,0,0,0);
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
         SharedPreferences sp = getSharedPreferences("login.dp", MODE_PRIVATE);
         boolean b = sp.getBoolean("b", false);
-        if (!b) {
-            ll.setVisibility(View.VISIBLE);
-            rl.setVisibility(View.INVISIBLE);
-        } else {
-            ll.setVisibility(View.INVISIBLE);
+        if (b) {
+            ll.setVisibility(View.GONE);
             rl.setVisibility(View.VISIBLE);
             String headPic = sp.getString("headPic", "");
             String nickName = sp.getString("nickName", "");
             Glide.with(this).load(headPic).circleCrop().into(headPic1);
             name.setText(nickName);
+        } else {
+            ll.setVisibility(View.VISIBLE);
+            rl.setVisibility(View.GONE);
         }
     }
 
@@ -190,10 +221,9 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_iv:
-                startActivity(this, LoginActivity.class);
-                break;
             case R.id.login:
-                startActivity(this, RegisterActivity.class);
+                startActivity(this, LoginActivity.class);
+                finish();
                 break;
             case R.id.she:
                 startActivity(this, SheActivity.class);

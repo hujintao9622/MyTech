@@ -52,8 +52,9 @@
                 android:drawablePadding="@dimen/dp_10"
                 android:paddingLeft="@dimen/dp_10"
                 android:textSize="18sp"
+                android:password="true"
                 android:textColorHint="#eeeeee"
-                android:hint="密码"/>
+                android:hint="登录密码"/>
             <CheckBox
                 android:id="@+id/img_loginEye"
                 android:layout_width="wrap_content"
@@ -64,7 +65,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
-
         <TextView
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
@@ -73,12 +73,10 @@
             android:layout_marginEnd="40dp"
             android:layout_gravity="right"
             android:layout_marginTop="30dp"
-            android:onClick="register"
             android:textSize="18sp"
             android:textColor="#fff"
             android:text="快速注册" />
     </LinearLayout>
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -91,11 +89,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
             android:layout_marginBottom="130dp"
-            android:onClick="login"
             android:textColor="#fff"
             android:textSize="18sp"
             android:text="登录" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,18 +102,14 @@
             android:textSize="18sp"
             android:text="@string/or"
             android:layout_marginRight="20dp" />
-
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="106dp"
+            android:id="@+id/wx"
             android:src="@mipmap/login_icon_wechat_n"
             android:layout_marginStart="80dp"
             android:layout_marginLeft="80dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -125,12 +117,8 @@
                 android:src="@mipmap/login_icon_artificialintelligence_n"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="80dp"
+                android:id="@+id/face"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="80dp" />
-        </RelativeLayout>
-
-
     </RelativeLayout>
-
-
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.wd.tech.model.bean;
+package com.wd.tech.model.bean.login;
 
 /**
  * date:2020/4/20 0020

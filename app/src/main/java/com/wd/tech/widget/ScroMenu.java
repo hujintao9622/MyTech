@@ -36,10 +36,7 @@ public class ScroMenu extends HorizontalScrollView {
 
     public ScroMenu(Context context, AttributeSet attrs) {
         super(context, attrs);
-        /*
-         * 获取屏幕的宽度
-         * 通过context拿到windowManager，在通过windowManager拿到Metrics,用DisplayMetrics接收
-         * */
+         // 获取屏幕的宽度
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(outMetrics);
@@ -70,7 +67,6 @@ public class ScroMenu extends HorizontalScrollView {
     }
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        // TODO Auto-generated method stub
         super.onLayout(changed, l, t, r, b);
          // 通过scrollTo（x,y）方法设置屏幕的偏移量，x为正
         if(changed){
@@ -79,14 +75,9 @@ public class ScroMenu extends HorizontalScrollView {
 
 
     }
-    /*
-     * 因为HorizontalScrollView自己控制move和down的事件
-     * 所以我们还要判断一下up.如果当前的x偏移量大于menu宽度的一半
-     * 隐藏menu，否则显示menu
-     * */
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        // TODO Auto-generated method stub
         switch(ev.getAction()){
             case MotionEvent.ACTION_UP:
                 int scrollX=getScrollX();

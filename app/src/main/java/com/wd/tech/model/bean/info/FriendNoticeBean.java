@@ -5,12 +5,12 @@ import java.util.List;
 /**
  * date:2020/4/21 0021
  * author:胡锦涛(Administrator)
- * function:
+ * function:用户好友通知
  */
 public class FriendNoticeBean {
 
     /**
-     * result : [{"fromHeadPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417201518.jpg","fromNickName":"黎明将之","fromUid":1381,"noticeId":1058,"noticeTime":1587128276000,"receiveUid":1372,"remark":"我是。。","status":1},{"fromHeadPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","fromNickName":"小猪猪！","fromUid":1374,"noticeId":1057,"noticeTime":1587094215000,"receiveUid":1372,"remark":"","status":2}]
+     * result : [{"fromHeadPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","fromNickName":"大前门","fromUid":1377,"noticeId":1068,"noticeTime":1587279566000,"receiveUid":1372,"remark":"","status":1},{"fromHeadPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417210315.jpg","fromNickName":"人间惊鸿客","fromUid":1385,"noticeId":1063,"noticeTime":1587131652000,"receiveUid":1372,"remark":"我是人间惊鸿客","status":2},{"fromHeadPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417201518.jpg","fromNickName":"黎明将之","fromUid":1381,"noticeId":1058,"noticeTime":1587128276000,"receiveUid":1372,"remark":"我是。。","status":2},{"fromHeadPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417213635.png","fromNickName":"小猪猪！","fromUid":1374,"noticeId":1057,"noticeTime":1587094215000,"receiveUid":1372,"remark":"","status":2}]
      * message : 查询成功
      * status : 0000
      */
@@ -45,13 +45,13 @@ public class FriendNoticeBean {
 
     public static class ResultBean {
         /**
-         * fromHeadPic : http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417201518.jpg
-         * fromNickName : 黎明将之
-         * fromUid : 1381
-         * noticeId : 1058
-         * noticeTime : 1587128276000
+         * fromHeadPic : http://mobile.bwstudent.com/images/tech/default/tech.jpg
+         * fromNickName : 大前门
+         * fromUid : 1377
+         * noticeId : 1068
+         * noticeTime : 1587279566000
          * receiveUid : 1372
-         * remark : 我是。。
+         * remark :
          * status : 1
          */
 

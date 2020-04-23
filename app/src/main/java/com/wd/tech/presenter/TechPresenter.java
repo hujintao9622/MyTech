@@ -111,6 +111,21 @@ public class TechPresenter extends BasePresenter<TechContract.IView> implements 
             }
         });
     }
+
+    @Override
+    public void postHeadParams(String url, Class cls, HashMap<String, Object> map,HashMap<String, Object> map1) {
+        techModel.postHeadParams(url, cls, map,map1,new TechContract.IModelCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                getView().onSuccess(o);
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+                getView().onFailure(e);
+            }
+        });
+    }
     @Override
     public void putNoParams(String url, Class cls) {
         techModel.putNoParams(url, cls, new TechContract.IModelCallback() {

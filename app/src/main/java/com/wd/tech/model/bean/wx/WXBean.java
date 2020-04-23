@@ -1,15 +1,15 @@
-package com.wd.tech.model.bean;
+package com.wd.tech.model.bean.wx;
 
 /**
- * date:2020/4/19 0019
+ * date:2020/4/22 0022
  * author:胡锦涛(Administrator)
- * function:
+ * function:微信
  */
-public class LoginBean {
+public class WXBean {
 
     /**
-     * result : {"headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","nickName":"春暖花开","phone":"18532186702","pwd":"bOI5BAk67nxPvY18c/iJKcZxKs31PJQGrh+HOVIzI/2ZPghqdmA1hXnqziZ4x/h++E2L2gxGHOWXTJFvWMc0kthWBWAK5/2v+7Kxgyge7QkA2ganv3QXHEQBcVlN7eyoE3hmKqcbcpWNNfd6wq/kx9ShpS5cL5egJgLEXXUr4s0=","sessionId":"15871232282781372","userId":1372,"userName":"q60Anb18532186702","whetherFaceId":0,"whetherVip":2}
-     * message : 登录成功
+     * result : {"headPic":"http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erhsK6n8h0PoBEB1p9ygJIiabqqUJ4QJbZh9FLYvyKKNKae1heIticoLJ5tN4uh7V6R1kSljIwr1f9Q/132","nickName":"涛_5EZ","pwd":"R+0jdN3P4MXHPMFVe9cX5MbX5ulIXHJkfigPLKEeTBY5lUgxJWUNg0js1oGtbsKiLFL4ScqdmUbtHXIfrgQnWrwTNjf09OJLycbeJ+ka4+CV7I1eEqG8DtZPnQoCyxjoYMjO4soDl6EX9YgqaZp3DlUH4pXrYHYz58YyFkSeJEk=","sessionId":"15875577535311440","userId":1440,"userName":"FVsajZh4qJ50Fl5Wb","whetherFaceId":2,"whetherVip":2}
+     * message : 登陆成功
      * status : 0000
      */
 
@@ -43,20 +43,18 @@ public class LoginBean {
 
     public static class ResultBean {
         /**
-         * headPic : http://mobile.bwstudent.com/images/tech/default/tech.jpg
-         * nickName : 春暖花开
-         * phone : 18532186702
-         * pwd : bOI5BAk67nxPvY18c/iJKcZxKs31PJQGrh+HOVIzI/2ZPghqdmA1hXnqziZ4x/h++E2L2gxGHOWXTJFvWMc0kthWBWAK5/2v+7Kxgyge7QkA2ganv3QXHEQBcVlN7eyoE3hmKqcbcpWNNfd6wq/kx9ShpS5cL5egJgLEXXUr4s0=
-         * sessionId : 15871232282781372
-         * userId : 1372
-         * userName : q60Anb18532186702
-         * whetherFaceId : 0
+         * headPic : http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erhsK6n8h0PoBEB1p9ygJIiabqqUJ4QJbZh9FLYvyKKNKae1heIticoLJ5tN4uh7V6R1kSljIwr1f9Q/132
+         * nickName : 涛_5EZ
+         * pwd : R+0jdN3P4MXHPMFVe9cX5MbX5ulIXHJkfigPLKEeTBY5lUgxJWUNg0js1oGtbsKiLFL4ScqdmUbtHXIfrgQnWrwTNjf09OJLycbeJ+ka4+CV7I1eEqG8DtZPnQoCyxjoYMjO4soDl6EX9YgqaZp3DlUH4pXrYHYz58YyFkSeJEk=
+         * sessionId : 15875577535311440
+         * userId : 1440
+         * userName : FVsajZh4qJ50Fl5Wb
+         * whetherFaceId : 2
          * whetherVip : 2
          */
 
         private String headPic;
         private String nickName;
-        private String phone;
         private String pwd;
         private String sessionId;
         private int userId;
@@ -78,14 +76,6 @@ public class LoginBean {
 
         public void setNickName(String nickName) {
             this.nickName = nickName;
-        }
-
-        public String getPhone() {
-            return phone;
-        }
-
-        public void setPhone(String phone) {
-            this.phone = phone;
         }
 
         public String getPwd() {

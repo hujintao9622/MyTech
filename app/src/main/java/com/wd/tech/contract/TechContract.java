@@ -31,6 +31,8 @@ public interface TechContract {
         void postNoParams(String url, Class cls);
         //post有参
         void postDoParams(String url, Class cls, HashMap<String, Object> map);
+        //post 头参
+        void postHeadParams(String url, Class cls, HashMap<String, Object> map,HashMap<String, Object> map1);
         //put无参
         void putNoParams(String url, Class cls);
         //put有参
@@ -53,6 +55,8 @@ public interface TechContract {
         void postNoParams(String url, Class cls, IModelCallback iModelCallback);
         //post有参
         void postDoParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
+        //post 头参
+        void postHeadParams(String url, Class cls, HashMap<String, Object> map,HashMap<String, Object> map1, IModelCallback iModelCallback);
         //put无参
         void putNoParams(String url, Class cls, IModelCallback iModelCallback);
         //put有参

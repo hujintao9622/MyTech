@@ -102,6 +102,22 @@ public class TechModel implements TechContract.IModel {
             }
         });
     }
+
+    @Override
+    public void postHeadParams(String url, Class cls, HashMap<String, Object> map,HashMap<String, Object> map1, final TechContract.IModelCallback iModelCallback) {
+        NetUtil.getInstance().postHeadParams(url, cls, map,map1,new NetUtil.ICallback() {
+            @Override
+            public void onSuccess(Object o) {
+                iModelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                iModelCallback.onFailure(e);
+            }
+        });
+    }
+
     @Override
     public void putNoParams(String url, Class cls, final TechContract.IModelCallback iModelCallback) {
         NetUtil.getInstance().putNoParams(url, cls, new NetUtil.ICallback() {
@@ -131,6 +147,7 @@ public class TechModel implements TechContract.IModel {
             }
         });
     }
+
     @Override
     public void dltNoParams(String url, Class cls, final TechContract.IModelCallback iModelCallback) {
         NetUtil.getInstance().dltNoParams(url, cls, new NetUtil.ICallback() {

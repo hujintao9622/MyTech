@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:gravity="center"
     android:layout_width="match_parent" android:layout_height="match_parent">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="联系人"/>
-</RelativeLayout>
+    <EditText
+        android:drawableLeft="@drawable/common_nav_btn_search_n_xxhdpi"
+        android:drawablePadding="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:layout_width="@dimen/dp_300"
+        android:background="@drawable/serch"
+        android:layout_height="@dimen/dp_30"
+        android:id="@+id/query"
+        android:hint="搜索"
+        android:layout_marginTop="@dimen/dp_10"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_10"
+            android:drawablePadding="@dimen/dp_10"
+            android:text="群组"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/nav_btn_setting_n_hdpi"/>
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_height="match_parent"
+        android:id="@+id/linkManRc"/>
+</LinearLayout>
