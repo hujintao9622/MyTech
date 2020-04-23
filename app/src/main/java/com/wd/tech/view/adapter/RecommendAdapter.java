@@ -35,7 +35,5 @@ public class RecommendAdapter extends BaseQuickAdapter<RecommendBean.ResultBean,
         SimpleDateFormat format = new SimpleDateFormat("mm");
         String timeString = format.format(new Date(item.getReleaseTime()));
         helper.setText(R.id.tv_recommend_time, timeString + "分钟前");
-        helper.setText(R.id.tv_recommend_collection, item.getCollection());
-        helper.setText(R.id.tv_recommend_share, item.getShare());
     }
 }

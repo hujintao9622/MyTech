@@ -147,16 +147,16 @@ public class MainActivity extends BaseActivity<TechPresenter> {
         getSupportActionBar().hide();
         SharedPreferences sp = getSharedPreferences("login.dp", MODE_PRIVATE);
         boolean b = sp.getBoolean("b", false);
-        if (!b) {
-            ll.setVisibility(View.VISIBLE);
-            rl.setVisibility(View.INVISIBLE);
-        } else {
+        if (b) {
             ll.setVisibility(View.INVISIBLE);
             rl.setVisibility(View.VISIBLE);
             String headPic = sp.getString("headPic", "");
             String nickName = sp.getString("nickName", "");
             Glide.with(this).load(headPic).circleCrop().into(headPic1);
             name.setText(nickName);
+        } else {
+            ll.setVisibility(View.VISIBLE);
+            rl.setVisibility(View.INVISIBLE);
         }
     }
 

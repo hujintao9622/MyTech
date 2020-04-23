@@ -60,26 +60,11 @@
                     android:layout_height="@dimen/dp_16"
                     android:layout_marginRight="@dimen/dp_6"
                     android:src="@mipmap/common_icon_collect_n" />
-                <TextView
-                    android:id="@+id/tv_recommend_collection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/sp_10"
-                    android:textColor="#999999"
-                    android:layout_marginRight="@dimen/dp_12"
-                    android:text="500" />
                 <ImageView
                     android:layout_width="@dimen/dp_16"
                     android:layout_height="@dimen/dp_16"
                     android:layout_marginRight="@dimen/dp_6"
                     android:src="@mipmap/common_icon_share_s" />
-                <TextView
-                    android:id="@+id/tv_recommend_share"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/sp_10"
-                    android:textColor="#999999"
-                    android:text="194" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
