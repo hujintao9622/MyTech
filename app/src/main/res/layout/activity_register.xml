@@ -13,6 +13,47 @@
         android:src="@drawable/logo_xxhdpi"
         android:layout_marginTop="@dimen/dp_50"
         android:layout_height="@dimen/dp_64"/>
+    <EditText
+        android:drawableLeft="@drawable/register_icon_name_n_xxhdpi"
+        android:id="@+id/register_name"
+        android:layout_width="@dimen/dp_280"
+        android:hint="昵称"
+        android:paddingLeft="@dimen/dp_10"
+        android:drawablePadding="@dimen/dp_10"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:drawableLeft="@drawable/login_icon_phone_n_hdpi"
+        android:id="@+id/register_phone"
+        android:layout_width="@dimen/dp_280"
+        android:hint="手机号"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:drawablePadding="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/register_pwd"
+        android:layout_width="@dimen/dp_280"
+        android:hint="登录密码"
+        android:textColor="#eeeeee"
+        android:drawablePadding="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:drawableLeft="@drawable/login_icon_lock_n_hdpi"
+        android:textColorHint="#eeeeee"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:layout_width="@dimen/dp_64"
+        android:src="@drawable/logo_xxhdpi"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_height="@dimen/dp_64"/>
         <EditText
             android:drawableLeft="@drawable/register_icon_name_n_xxhdpi"
             android:id="@+id/register_name"

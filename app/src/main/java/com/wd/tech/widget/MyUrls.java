@@ -19,6 +19,10 @@ public interface MyUrls {
     String BASE_LOGIN="techApi/user/v1/login";
     //注册 post nickName phone pwd
     String BASE_REGISTER="techApi/user/v1/register";
+    // 轮播图
+    String BASE_BANNER="techApi/information/v1/bannerShow";
+    // 资讯展示列表
+    String INFO_RECOMMEND="techApi/information/v1/infoRecommendList";
     //微信登录
     String BASE_WX_LOGIN="techApi/user/v1/weChatLogin";
 
