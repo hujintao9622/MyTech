@@ -28,4 +28,7 @@ public interface MyUrls {
     //根据ID查询信息
     String BASE_BYID="techApi/user/verify/v1/getUserInfoByUserId";
 
+    //消息
+    //查询好友通知
+    String BASE_FRIEND_NOTICE="techApi/chat/verify/v1/findFriendNoticePageList";
 }

@@ -2,24 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
+        android:background="#DCDADA"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="#eee"
         android:layout_height="@dimen/dp_100">
         <RadioGroup
             android:layout_width="@dimen/dp_200"
             android:layout_height="@dimen/dp_40"
             android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:id="@+id/info_rg"
             android:background="@drawable/infoselet"
             >
             <RadioButton
-                android:layout_width="@dimen/dp_100"
+                android:layout_width="@dimen/dp_0"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:button="@null"
+                android:gravity="center"
+                android:background="@drawable/infotitle"
+                android:id="@+id/info_rb1"
+                android:checked="true"
+                android:textColor="@drawable/textcolor"
                 android:text="消息"/>
+            <RadioButton
+                android:layout_width="@dimen/dp_0"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:gravity="center"
+                android:background="@drawable/infotitle"
+                android:id="@+id/info_rb2"
+                android:textColor="@drawable/textcolor"
+                android:text="联系人"/>
         </RadioGroup>
-    </LinearLayout>
-
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_20"
+            android:id="@+id/jia"
+            android:src="@drawable/common_nav_btn_add_n_xhdpi"/>
+    </RelativeLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vp"/>
 </LinearLayout>

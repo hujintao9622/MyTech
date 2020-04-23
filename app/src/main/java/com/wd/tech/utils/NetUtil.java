@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.wd.tech.R;
@@ -78,9 +79,9 @@ public class NetUtil {
                 KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
                 keyStore.load(null);//初始化证书资源，首次是空
 
-                //校验证书，x.509协议，所有的证书都是通过x.509协议生成的
-                CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-                X509Certificate certificate = (X509Certificate) certificateFactory.generateCertificate(MyApp.mContext.getResources().openRawResource(R.raw.server));
+            //校验证书，x.509协议，所有的证书都是通过x.509协议生成的
+            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+            X509Certificate certificate = (X509Certificate) certificateFactory.generateCertificate(MyApp.mContext.getResources().openRawResource(R.raw.server));
 
                 //ssl协议入场，看看是不是符合ssl协议标准
                 SSLContext sc = SSLContext.getInstance("TLS");
@@ -192,6 +193,38 @@ public class NetUtil {
     //get有参
     public void getDoParams(String url, final Class cls, HashMap<String,Object> map, final ICallback iCallback){
         api.getDoParams(url,map).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            iCallback.onSuccess(o);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    //get头参
+    public void getHeadParams(String url, final Class cls, HashMap<String,Object> map, final ICallback iCallback){
+        api.getHeadParams(url,map).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {
                     @Override
