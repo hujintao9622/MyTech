@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wd.tech.R;
-import com.wd.tech.model.bean.RecommendBean;
+import com.wd.tech.model.bean.information.RecommendBean;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
