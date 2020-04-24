@@ -1,4 +1,4 @@
-package com.wd.tech.model.bean;
+package com.wd.tech.model.bean.information;
 
 import java.util.List;
 

@@ -89,6 +89,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
             android:layout_marginBottom="130dp"
+            android:onClick="login"
             android:textColor="#fff"
             android:textSize="18sp"
             android:text="登录" />

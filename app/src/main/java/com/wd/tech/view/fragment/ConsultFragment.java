@@ -1,6 +1,6 @@
 package com.wd.tech.view.fragment;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,14 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.stx.xhb.androidx.XBanner;
 import com.stx.xhb.androidx.entity.SimpleBannerInfo;
 import com.stx.xhb.androidx.transformers.Transformer;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
-import com.wd.tech.model.bean.BannerBean;
-import com.wd.tech.model.bean.RecommendBean;
+import com.wd.tech.model.bean.information.BannerBean;
+import com.wd.tech.model.bean.information.RecommendBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.view.activity.DetailsActivity;
 import com.wd.tech.view.adapter.RecommendAdapter;
 import com.wd.tech.widget.MyApp;
 import com.wd.tech.widget.MyUrls;
@@ -27,8 +29,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * date:2020/4/19 0019
@@ -106,7 +106,17 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
             if (((RecommendBean) o).getStatus().equals("0000")) {
                 ArrayList<RecommendBean.ResultBean> recommendList = (ArrayList<RecommendBean.ResultBean>) ((RecommendBean) o).getResult();
                 rvInfoRecommend.setLayoutManager(new LinearLayoutManager(MyApp.mContext, RecyclerView.VERTICAL, false));
-                rvInfoRecommend.setAdapter(new RecommendAdapter(R.layout.item_recommend, recommendList));
+                RecommendAdapter recommendAdapter = new RecommendAdapter(R.layout.item_recommend, recommendList);
+                rvInfoRecommend.setAdapter(recommendAdapter);
+                recommendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        int id = ((RecommendBean) o).getResult().get(position).getId();
+                        Intent intent = new Intent(MyApp.getmContext(), DetailsActivity.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                    }
+                });
             }
         }
     }
