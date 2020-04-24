@@ -33,8 +33,8 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
     RadioGroup infoRg;
     @BindView(R.id.jia)
     ImageView jia;
-    @BindView(R.id.vp)
-    ViewPager vp;
+    @BindView(R.id.info_vp)
+    ViewPager infoVp;
 
     @Override
     protected void initView(View view) {
@@ -57,7 +57,7 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
         fglist.add(new InfoItFragment());
         fglist.add(new LinkManFragment());
         //设置适配器
-        vp.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
+        infoVp.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @NonNull
             @Override
             public Fragment getItem(int position) {
@@ -74,15 +74,15 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.info_rb1:
-                        vp.setCurrentItem(0);
+                        infoVp.setCurrentItem(0);
                         break;
                     case R.id.info_rb2:
-                        vp.setCurrentItem(1);
+                        infoVp.setCurrentItem(1);
                         break;
                 }
             }
         });
-        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        infoVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

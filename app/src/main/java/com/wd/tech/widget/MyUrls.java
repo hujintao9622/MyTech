@@ -40,4 +40,8 @@ public interface MyUrls {
     //查询我的好友列表 get searchName
     String BASE_FIND_FRIEND="techApi/chat/verify/v1/searchFriend";
 
+    //社区
+    //社区列表
+    String BASE_COMMUNITYLIST="techApi/community/v1/findCommunityList";
+
 }

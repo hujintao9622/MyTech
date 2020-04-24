@@ -57,6 +57,15 @@ public class FriendGroupBean {
         private int customize;
         private int groupId;
         private String groupName;
+        private boolean isClosed;
+
+        public boolean isClosed() {
+            return isClosed;
+        }
+
+        public void setClosed(boolean closed) {
+            isClosed = closed;
+        }
 
         public int getBlack() {
             return black;

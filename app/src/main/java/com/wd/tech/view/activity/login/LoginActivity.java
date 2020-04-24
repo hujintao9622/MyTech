@@ -2,7 +2,6 @@ package com.wd.tech.view.activity.login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -12,23 +11,23 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
-import com.wd.tech.model.bean.LoginBean;
+import com.wd.tech.model.bean.login.LoginBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.utils.NetUtil;
 import com.wd.tech.utils.RsaCoder;
 import com.wd.tech.view.activity.MainActivity;
+import com.wd.tech.widget.MyApp;
 import com.wd.tech.widget.MyUrls;
 
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<TechPresenter> {
@@ -39,6 +38,10 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     EditText etLoginPwd;
     @BindView(R.id.img_loginEye)
     CheckBox imgLoginEye;
+    @BindView(R.id.tv_register)
+    TextView tvRegister;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
     private SharedPreferences sp;
 
     @Override
@@ -89,21 +92,9 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
             editor.putString("sessionId", resultBean.getSessionId());
             editor.putBoolean("b", true);
             editor.commit();
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("login", true);
-            startActivity(intent);
+            startActivity(LoginActivity.this,MainActivity.class);
             finish();
-        } else
-            Toast.makeText(this, ((LoginBean) o).getMessage(), Toast.LENGTH_SHORT).show();
-    }
-
-    // 手机号正则表达式
-    public static boolean isMobileNO(String mobileNums) {
-        String telRegex = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";// "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
-        if (TextUtils.isEmpty(mobileNums))
-            return false;
-        else
-            return mobileNums.matches(telRegex);
+        }
     }
 
     @Override
@@ -111,25 +102,49 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
         Toast.makeText(this, e + "", Toast.LENGTH_SHORT).show();
     }
 
-    // 登录监听
-    public void login(View view) throws Exception {
-        String phone = etLoginPhone.getText().toString().trim();
-        String pwd = etLoginPwd.getText().toString().trim();
-        String rsaPwd = RsaCoder.encryptByPublicKey(pwd);
-        if (isMobileNO(phone)) {
-            // 使用RSA公钥对密码加密
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("phone", phone);
-            map.put("pwd", rsaPwd);
-            mPresenter.postDoParams(MyUrls.BASE_LOGIN, LoginBean.class, map);
-        } else {
-            Toast.makeText(this, "格式不正确", Toast.LENGTH_SHORT).show();
+    @OnClick({R.id.tv_register, R.id.btn_login,R.id.wx,R.id.face})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_register://注册
+                startActivity(this, RegisterActivity.class);
+                break;
+            case R.id.btn_login:
+                String phone = etLoginPhone.getText().toString().trim();
+                String pwd = etLoginPwd.getText().toString().trim();
+                String rsaPwd = null;
+                try {
+                    rsaPwd = RsaCoder.encryptByPublicKey(pwd);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (NetUtil.isMobileNO(phone)) {
+                    // 使用RSA公钥对密码加密
+                    HashMap<String, Object> map = new HashMap<>();
+                    map.put("phone", phone);
+                    map.put("pwd", rsaPwd);
+                    mPresenter.postDoParams(MyUrls.BASE_LOGIN, LoginBean.class, map);
+                } else {
+                    Toast.makeText(this, "手机号格式不正确", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.wx:
+                boolean b = MyApp.mWxApi.isWXAppInstalled();
+                Log.e("code",b+"");
+                if (b){
+                    //发起微信请求
+                    SendAuth.Req req = new SendAuth.Req();
+                    req.scope = "snsapi_userinfo";
+                    req.state="wx_login";
+                    MyApp.mWxApi.sendReq(req);
+                }else {
+                    Toast.makeText(this, "请先安装微信", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                finish();
+                break;
+            case R.id.face:
+
+                break;
         }
-
-    }
-
-    // 注册监听
-    public void register(View view) {
-        startActivity(this, RegisterActivity.class);
     }
 }

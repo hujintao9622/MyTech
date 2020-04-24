@@ -61,6 +61,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:+'
 //RecyclerView依赖：
     implementation 'com.android.support:recyclerview-v7:29.0.2'
+    // RecyclerView的快速适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
 //butterknife依赖
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
@@ -74,4 +76,8 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
     //微信
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //androidX 版本使用下面的依赖
+    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.8'
+    //swipe
+    compile 'com.yanzhenjie:recyclerview-swipe:1.1.4'
 }

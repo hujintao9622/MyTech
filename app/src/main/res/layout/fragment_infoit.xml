@@ -12,7 +12,7 @@
         android:layout_height="@dimen/dp_30"
         android:hint="搜索"
         android:layout_marginTop="@dimen/dp_10"/>
-    <androidx.recyclerview.widget.RecyclerView
+    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_height="match_parent"
