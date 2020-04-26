@@ -27,6 +27,10 @@ public interface MyUrls {
     String INFO_RECOMMEND="techApi/information/v1/infoRecommendList";
     // 资讯详情
     String INFORMATION_DETAILS = "techApi/information/v1/findInformationDetails";
+    // 资讯评论
+    String INFORMATION_COMMENT = "techApi/information/v1/findAllInfoCommentList";
+    // 查询用户积分
+    String USER_INTEGRAL = "techApi/user/verify/v1/findUserIntegral";
 
     //微信登录
     String BASE_WX_LOGIN="techApi/user/v1/weChatLogin";

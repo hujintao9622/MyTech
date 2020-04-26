@@ -14,6 +14,8 @@
         <activity android:name=".view.activity.community.WriteFilmActivity" />
         <activity android:name=".view.activity.community.WritePostActivity" />
         <activity android:name=".view.activity.DetailsActivity" />
+        <activity android:name=".view.activity.VipActivity"></activity>
+        <activity android:name=".view.activity.IntegralActivity" />
         <activity android:name=".view.activity.my.SheActivity" />
         <activity android:name=".view.activity.login.RegisterActivity" />
         <activity android:name=".view.activity.login.LoginActivity" />
@@ -35,6 +37,5 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
