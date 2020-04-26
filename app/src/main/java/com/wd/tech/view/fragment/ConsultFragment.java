@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * date:2020/4/19 0019
@@ -40,6 +41,10 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
     XBanner xBanner;
     @BindView(R.id.rv_info_recommend)
     RecyclerView rvInfoRecommend;
+    @BindView(R.id.img_recommend_menu)
+    ImageView imgRecommendMenu;
+    @BindView(R.id.img_recommend_search)
+    ImageView imgRecommendSearch;
 
     @Override
     protected void initView(View view) {
@@ -124,5 +129,16 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
     @Override
     public void onFailure(Throwable e) {
 
+    }
+
+    @OnClick({R.id.img_recommend_menu, R.id.img_recommend_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_recommend_menu:
+                break;
+            case R.id.img_recommend_search:
+
+                break;
+        }
     }
 }

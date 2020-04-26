@@ -31,6 +31,8 @@ public interface MyUrls {
     String INFORMATION_COMMENT = "techApi/information/v1/findAllInfoCommentList";
     // 查询用户积分
     String USER_INTEGRAL = "techApi/user/verify/v1/findUserIntegral";
+    // 用积分兑换资讯权限
+    String PAY_INTEGRAL = "techApi/information/verify/v1/infoPayByIntegral";
 
     //微信登录
     String BASE_WX_LOGIN="techApi/user/v1/weChatLogin";

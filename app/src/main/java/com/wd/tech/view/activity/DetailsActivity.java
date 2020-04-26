@@ -68,11 +68,12 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
     private TextView tvIntegral;
     private TextView tvVip;
     private DetailsBean.ResultBean result;
+    private int id;
 
     @Override
     protected void initView() {
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id", 0);
+        id = intent.getIntExtra("id", 0);
         // 资讯详情
         HashMap<String, Object> map = new HashMap<>();
         map.put("id", id);
@@ -123,22 +124,17 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
                 Glide.with(this).load(((DetailsBean) o).getResult().getThumbnail()).into(imgDetailsThumbnail);
                 Document document = Jsoup.parseBodyFragment(((DetailsBean) o).getResult().getContent());
                 String text = document.text();
-                Log.e("TAG", "onSuccess: " + ((DetailsBean) o).getResult().getReadPower());
-                switch (((DetailsBean) o).getResult().getReadPower()) {
-                    case 2:
-                        // 有权限查看
-                        tvDetailsContent.setText(text);
-                        imgNoPay.setVisibility(View.GONE);
-                        btnNoPay.setVisibility(View.GONE);
-                        break;
-                    case 1:
-                        // 没有权限查看
-                        tvDetailsContent.setMaxLines(12);
-                        tvDetailsContent.setEllipsize(TextUtils.TruncateAt.END);
-                        imgNoPay.setVisibility(View.VISIBLE);
-                        btnNoPay.setVisibility(View.VISIBLE);
-
-                        return;
+                if (((DetailsBean) o).getResult().getReadPower() == 1) {
+                    // 有权限查看
+                    tvDetailsContent.setText(text);
+                    imgNoPay.setVisibility(View.GONE);
+                    btnNoPay.setVisibility(View.GONE);
+                } else if (((DetailsBean) o).getResult().getReadPower() == 2) {
+                    // 没有权限查看
+                    tvDetailsContent.setMaxLines(12);
+                    tvDetailsContent.setEllipsize(TextUtils.TruncateAt.END);
+                    imgNoPay.setVisibility(View.VISIBLE);
+                    btnNoPay.setVisibility(View.VISIBLE);
                 }
                 rvDetailsPlate.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
                 rvDetailsPlate.setAdapter(new PlateAdapter(R.layout.item_details_plate, plateList));
@@ -196,7 +192,8 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
                 intent.putExtra("time", result.getReleaseTime());
                 intent.putExtra("praise", result.getPraise());
                 intent.putExtra("share", result.getShare());
-                intent.putExtra("yuanCost", 1);
+                intent.putExtra("yuanCost", result.getYuanCost());
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

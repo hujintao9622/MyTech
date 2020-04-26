@@ -7,12 +7,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_30">
+        android:layout_height="@dimen/dp_50">
         <ImageView
+            android:id="@+id/img_recommend_menu"
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
             android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginTop="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_12"
             android:src="@mipmap/home_nav_btn_menu_n" />
 
         <TextView
@@ -23,10 +24,11 @@
             android:text="资讯" />
 
         <ImageView
+            android:id="@+id/img_recommend_search"
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_12"
             android:src="@mipmap/common_nav_btn_search_n"
             android:layout_marginRight="@dimen/dp_12" />
     </RelativeLayout>
