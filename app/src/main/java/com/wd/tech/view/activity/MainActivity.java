@@ -1,5 +1,6 @@
 package com.wd.tech.view.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -143,6 +144,15 @@ public class MainActivity extends BaseActivity<TechPresenter> {
         //默认页面
         rg.check(rg.getChildAt(0).getId());
         vp.setCurrentItem(0);
+        Intent intent = getIntent();
+        if (intent != null) {
+            boolean b = intent.getBooleanExtra("bb",false);
+            if (b){
+                rg.check(rg.getChildAt(2).getId());
+                vp.setCurrentItem(2);
+            }
+        }
+
     }
 
     @Override

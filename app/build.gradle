@@ -82,4 +82,7 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.13.1'
     //swipe
     implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
+    //floatActionButton
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:23.1.1'
 }

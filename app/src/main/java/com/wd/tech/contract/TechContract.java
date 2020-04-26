@@ -3,6 +3,7 @@ package com.wd.tech.contract;
 import java.util.HashMap;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * date:2020/4/18 0018
@@ -33,6 +34,8 @@ public interface TechContract {
         void postDoParams(String url, Class cls, HashMap<String, Object> map);
         //post 头参
         void postHeadParams(String url, Class cls, HashMap<String, Object> map,HashMap<String, Object> map1);
+        //post file
+        void postFileParams(String url, Class cls, HashMap<String, RequestBody> map);
         //put无参
         void putNoParams(String url, Class cls);
         //put有参
@@ -57,6 +60,8 @@ public interface TechContract {
         void postDoParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
         //post 头参
         void postHeadParams(String url, Class cls, HashMap<String, Object> map,HashMap<String, Object> map1, IModelCallback iModelCallback);
+        //post file
+        void postFileParams(String url, Class cls,HashMap<String, RequestBody> map,IModelCallback iModelCallback);
         //put无参
         void putNoParams(String url, Class cls, IModelCallback iModelCallback);
         //put有参

@@ -1,5 +1,6 @@
 package com.wd.tech.view.fragment.info;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
@@ -70,7 +71,6 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
 
     @Override
     public void onSuccess(Object o) {
-
         if (o instanceof FriendNoticeBean&&TextUtils.equals("0000",((FriendNoticeBean) o).getStatus())){
             if (((FriendNoticeBean) o).getResult().size()>0){
                 List<FriendNoticeBean.ResultBean> result = ((FriendNoticeBean) o).getResult();
@@ -79,7 +79,8 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
                     @Override
                     public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
 
-                        SwipeMenuItem deleteItem = new SwipeMenuItem(getContext())
+                        @SuppressLint("ResourceType") SwipeMenuItem deleteItem = new SwipeMenuItem(getContext())
+                                .setBackground(R.drawable.red)
                                 .setText("删除")
                                 .setHeight(ViewGroup.LayoutParams.MATCH_PARENT)//设置高，这里使用match_parent，就是与item的高相同
                                 .setWidth(70);//设置宽

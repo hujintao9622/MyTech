@@ -9,9 +9,8 @@ import java.util.List;
  */
 public class CommunityListBean {
 
-
     /**
-     * result : [{"comment":0,"communityCommentVoList":[],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-22/20200422003552.jpg","id":1901,"nickName":"花花公子","praise":0,"publishTime":1587574078000,"signature":"爱是一道光","userId":1402,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"再次测试","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417204020.png","id":1900,"nickName":"幻影月缺醉几何","praise":1,"publishTime":1587515293000,"signature":"一起走向科技","userId":1383,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"这是我发的帖子","file":"http://mobile.bwstudent.com/images/tech/community_pic/2020-04-21/6423720200421201411.png","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":1899,"nickName":"袁晨冉","praise":1,"publishTime":1587471251000,"userId":1401,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"兄弟们，集图啦！","file":"http://mobile.bwstudent.com/images/tech/community_pic/2020-04-21/9781020200421180028.png","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417204020.png","id":1898,"nickName":"幻影月缺醉几何","praise":2,"publishTime":1587463228000,"signature":"一起走向科技","userId":1383,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"奥利给","nickName":"花花23","userId":1414}],"content":"奥利给","file":"http://mobile.bwstudent.com/images/tech/community_pic/2020-04-21/0745820200421141329.png","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":1897,"nickName":"花花23","praise":1,"publishTime":1587449609000,"userId":1414,"whetherFollow":2,"whetherGreat":2,"whetherVip":2}]
+     * result : [{"comment":1,"communityCommentVoList":[{"content":"nihao a ","nickName":"诗和远方","userId":1372}],"content":"这是我发送的帖子","file":"http://mobile.bwstudent.com/images/tech/community_pic/2020-04-26/2634120200426095501.jpg","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-25/20200425144642.png","id":1946,"nickName":"TestCode","praise":0,"publishTime":1587866101000,"userId":1425,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":5,"communityCommentVoList":[{"content":"5","nickName":"诗和远方","userId":1372},{"content":"4","nickName":"诗和远方","userId":1372},{"content":"3","nickName":"诗和远方","userId":1372}],"content":"2","file":"http://mobile.bwstudent.com/images/tech/community_pic/2020-04-26/1532420200426090648.jpg","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1945,"nickName":"诗和远方","praise":0,"publishTime":1587863208000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"1","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1944,"nickName":"诗和远方","praise":0,"publishTime":1587862747000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"加载图片2","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1943,"nickName":"诗和远方","praise":0,"publishTime":1587862068000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"加载图片","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1942,"nickName":"诗和远方","praise":0,"publishTime":1587861134000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"\"终于...\"","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1941,"nickName":"诗和远方","praise":9,"publishTime":1587821305000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"\"你好啊\"","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1940,"nickName":"诗和远方","praise":1,"publishTime":1587820828000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"\"改善测试\"","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1939,"nickName":"诗和远方","praise":2,"publishTime":1587819609000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"\"再次发帖\"","file":"","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","id":1938,"nickName":"诗和远方","praise":1,"publishTime":1587819079000,"signature":"剑与远征","userId":1372,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"1","nickName":"小小科技","userId":1384}],"content":"666","file":"http://mobile.bwstudent.com/images/tech/community_pic/2020-04-25/2657320200425203727.png","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":1937,"nickName":"小小科技","praise":1,"publishTime":1587818247000,"signature":"666","userId":1384,"whetherFollow":2,"whetherGreat":2,"whetherVip":2}]
      * message : 查询成功
      * status : 0000
      */
@@ -46,20 +45,20 @@ public class CommunityListBean {
 
     public static class ResultBean {
         /**
-         * comment : 0
-         * communityCommentVoList : []
-         * content : 123
-         * file :
-         * headPic : http://mobile.bwstudent.com/images/tech/head_pic/2020-04-22/20200422003552.jpg
-         * id : 1901
-         * nickName : 花花公子
+         * comment : 1
+         * communityCommentVoList : [{"content":"nihao a ","nickName":"诗和远方","userId":1372}]
+         * content : 这是我发送的帖子
+         * file : http://mobile.bwstudent.com/images/tech/community_pic/2020-04-26/2634120200426095501.jpg
+         * headPic : http://mobile.bwstudent.com/images/tech/head_pic/2020-04-25/20200425144642.png
+         * id : 1946
+         * nickName : TestCode
          * praise : 0
-         * publishTime : 1587574078000
-         * signature : 爱是一道光
-         * userId : 1402
+         * publishTime : 1587866101000
+         * userId : 1425
          * whetherFollow : 2
          * whetherGreat : 2
          * whetherVip : 2
+         * signature : 剑与远征
          */
 
         private int comment;
@@ -70,12 +69,12 @@ public class CommunityListBean {
         private String nickName;
         private int praise;
         private long publishTime;
-        private String signature;
         private int userId;
         private int whetherFollow;
         private int whetherGreat;
         private int whetherVip;
-        private List<?> communityCommentVoList;
+        private String signature;
+        private List<CommunityCommentVoListBean> communityCommentVoList;
 
         public int getComment() {
             return comment;
@@ -141,14 +140,6 @@ public class CommunityListBean {
             this.publishTime = publishTime;
         }
 
-        public String getSignature() {
-            return signature;
-        }
-
-        public void setSignature(String signature) {
-            this.signature = signature;
-        }
-
         public int getUserId() {
             return userId;
         }
@@ -181,12 +172,56 @@ public class CommunityListBean {
             this.whetherVip = whetherVip;
         }
 
-        public List<?> getCommunityCommentVoList() {
+        public String getSignature() {
+            return signature;
+        }
+
+        public void setSignature(String signature) {
+            this.signature = signature;
+        }
+
+        public List<CommunityCommentVoListBean> getCommunityCommentVoList() {
             return communityCommentVoList;
         }
 
-        public void setCommunityCommentVoList(List<?> communityCommentVoList) {
+        public void setCommunityCommentVoList(List<CommunityCommentVoListBean> communityCommentVoList) {
             this.communityCommentVoList = communityCommentVoList;
+        }
+
+        public static class CommunityCommentVoListBean {
+            /**
+             * content : nihao a
+             * nickName : 诗和远方
+             * userId : 1372
+             */
+
+            private String content;
+            private String nickName;
+            private int userId;
+
+            public String getContent() {
+                return content;
+            }
+
+            public void setContent(String content) {
+                this.content = content;
+            }
+
+            public String getNickName() {
+                return nickName;
+            }
+
+            public void setNickName(String nickName) {
+                this.nickName = nickName;
+            }
+
+            public int getUserId() {
+                return userId;
+            }
+
+            public void setUserId(int userId) {
+                this.userId = userId;
+            }
         }
     }
 }

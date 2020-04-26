@@ -38,7 +38,6 @@ public class FriendGroupAdapter extends RecyclerView.Adapter<FriendGroupAdapter.
     public void addAllChild(int position, List<FriendListBean.ResultBean> mchild) {
         child=mchild;
         pos=position;
-        notifyDataSetChanged();
     }
     @NonNull
     @Override
@@ -56,7 +55,7 @@ public class FriendGroupAdapter extends RecyclerView.Adapter<FriendGroupAdapter.
             holder.rc.setVisibility(View.GONE);
         }else {
             if (currentNumber==0){
-                holder.rc.setVisibility(View.GONE);
+                child=null;
             }else {
                 holder.rc.setVisibility(View.VISIBLE);
             }
