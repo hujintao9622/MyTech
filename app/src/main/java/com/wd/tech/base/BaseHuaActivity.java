@@ -15,7 +15,7 @@ import butterknife.Unbinder;
  * author:胡锦涛(Administrator)
  * function:activity基类
  */
-public abstract class BaseActivity<P extends BasePresenter> extends IActivity implements TechContract.IView {
+public abstract class BaseHuaActivity<P extends BasePresenter> extends BaseSwipeBackActivity implements TechContract.IView {
     protected P mPresenter;
     private Unbinder bind;
     @Override

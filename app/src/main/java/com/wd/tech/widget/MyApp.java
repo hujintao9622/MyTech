@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.abner.ming.SlideFinishManager;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
@@ -24,6 +25,8 @@ public class MyApp extends Application {
         super.onCreate();
         mContext=this;
         registToWX();
+        SlideFinishManager.getInstance().init(this);
+
     }
     private void registToWX() {
         //AppConst.WEIXIN.APP_ID是指你应用在微信开放平台上的AppID，记得替换。

@@ -85,4 +85,5 @@ dependencies {
     //floatActionButton
     //noinspection GradleCompatible
     implementation 'com.android.support:design:23.1.1'
+    implementation project(path: ':swipelibrary')
 }

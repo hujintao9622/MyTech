@@ -1,14 +1,11 @@
 package com.wd.tech.view.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
@@ -25,10 +22,9 @@ import com.wd.tech.model.bean.community.CommunityFlimBean;
 import com.wd.tech.model.bean.community.CommunityListBean;
 import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.view.activity.MainActivity;
 import com.wd.tech.view.activity.community.WriteFilmActivity;
 import com.wd.tech.view.activity.community.WritePostActivity;
-import com.wd.tech.view.adapter.commuity.CommUserActivity;
+import com.wd.tech.view.activity.community.CommUserActivity;
 import com.wd.tech.view.adapter.commuity.CommuityAdapter;
 import com.wd.tech.widget.MyUrls;
 

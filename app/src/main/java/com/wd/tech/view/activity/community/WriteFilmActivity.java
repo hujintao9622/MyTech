@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
+import com.wd.tech.base.BaseHuaActivity;
 import com.wd.tech.model.bean.community.CommPlBean;
 import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.presenter.TechPresenter;
@@ -29,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class WriteFilmActivity extends BaseActivity<TechPresenter> {
+public class WriteFilmActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.comeback)
     ImageView comeback;

@@ -23,6 +23,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
+import com.wd.tech.base.BaseHuaActivity;
 import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.RxPartMapUtils;
@@ -40,7 +41,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class WritePostActivity extends BaseActivity<TechPresenter> {
+public class WritePostActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.comeback)
     TextView comeback;
