@@ -1,5 +1,7 @@
 package com.wd.tech.view.fragment;
 
+import android.content.Intent;
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -8,12 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -23,6 +27,7 @@ import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
 import com.wd.tech.model.bean.community.CommunityFlimBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.view.activity.info.InfoSelefriendActivity;
 import com.wd.tech.view.fragment.info.InfoItFragment;
 import com.wd.tech.view.fragment.info.LinkManFragment;
 import com.wd.tech.widget.MyUrls;
@@ -128,20 +133,22 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @OnClick(R.id.jia)
     public void onViewClicked() {
-
+        showPopupWindow();
     }
     //弹出框
-    private void showPopupWindow(int id) {
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void showPopupWindow() {
         //加载布局
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.popupjia, null);
         popupWindow = new PopupWindow(view,
-                ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setContentView(view);
         //设置各个控件的点击响应
-        final EditText editText = view.findViewById(R.id.et);
-        Button btn = view.findViewById(R.id.bt);
+        LinearLayout addFriend = view.findViewById(R.id.add_friend);
+        LinearLayout create_group = view.findViewById(R.id.create_group);
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -152,16 +159,24 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
                 return false;
             }
         });
-        btn.setOnClickListener(new View.OnClickListener() {
+        //添加朋友
+        addFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), InfoSelefriendActivity.class);
+                startActivity(intent);
+            }
+        });
+        create_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2020/4/29 0029 创建群组
             }
         });
         //是否具有获取焦点的能力
         popupWindow.setFocusable(true);
         //显示PopupWindow
         View rootview = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, null);
-        popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+        popupWindow.showAsDropDown(rootview,500,200,Gravity.RIGHT);
     }
 }
