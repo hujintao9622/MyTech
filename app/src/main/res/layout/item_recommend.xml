@@ -64,11 +64,14 @@
                 android:gravity="center_vertical"
                 android:layout_alignParentRight="true"
                 android:orientation="horizontal">
-                <ImageView
+                <CheckBox
+                    android:id="@+id/che_recommend_praise"
                     android:layout_width="@dimen/dp_16"
                     android:layout_height="@dimen/dp_16"
                     android:layout_marginRight="@dimen/dp_6"
-                    android:src="@mipmap/common_icon_collect_n" />
+                    android:checked="false"
+                    android:background="@drawable/values"
+                    android:button="@null" />
                 <TextView
                     android:id="@+id/tv_recommend_praise"
                     android:layout_width="wrap_content"

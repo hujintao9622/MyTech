@@ -1,22 +1,17 @@
 package com.wd.tech.view.fragment.info;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
-import com.wd.tech.model.bean.info.FriendListBean;
 import com.wd.tech.model.bean.info.FriendNoticeBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.view.activity.MainActivity;
 import com.wd.tech.view.adapter.InfoItAdapter;
 import com.wd.tech.widget.MyUrls;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;

@@ -1,4 +1,4 @@
-package com.wd.tech.view.activity;
+package com.wd.tech.view.activity.information;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

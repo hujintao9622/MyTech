@@ -3,7 +3,11 @@ package com.wd.tech.view.fragment;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +21,11 @@ import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
 import com.wd.tech.model.bean.information.BannerBean;
 import com.wd.tech.model.bean.information.RecommendBean;
+import com.wd.tech.model.bean.login.RegisterBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.view.activity.DetailsActivity;
+import com.wd.tech.view.activity.information.DetailsActivity;
+import com.wd.tech.view.activity.information.PlatesActivity;
+import com.wd.tech.view.activity.information.SearchActivity;
 import com.wd.tech.view.adapter.RecommendAdapter;
 import com.wd.tech.widget.MyApp;
 import com.wd.tech.widget.MyUrls;
@@ -27,6 +34,7 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,18 +53,23 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
     ImageView imgRecommendMenu;
     @BindView(R.id.img_recommend_search)
     ImageView imgRecommendSearch;
+    private int i1;
 
     @Override
     protected void initView(View view) {
-
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            i1 = random.nextInt(9) + 1;
+        }
         // 轮播图
         mPresenter.getNoParams(MyUrls.BASE_BANNER, BannerBean.class);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("plateId", "1");
+        map.put("plateId", i1);
         map.put("page", "1");
         map.put("count", "10");
         // 资讯展示列表
         mPresenter.getDoParams(MyUrls.INFO_RECOMMEND, RecommendBean.class, map);
+
     }
 
     @Override
@@ -113,15 +126,36 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
                 rvInfoRecommend.setLayoutManager(new LinearLayoutManager(MyApp.mContext, RecyclerView.VERTICAL, false));
                 RecommendAdapter recommendAdapter = new RecommendAdapter(R.layout.item_recommend, recommendList);
                 rvInfoRecommend.setAdapter(recommendAdapter);
-                recommendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+
+                recommendAdapter.setOnItemClickListene(new RecommendAdapter.ItemClickListener() {
                     @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    public void onItemClick(int position, CheckBox checkBox, TextView textView, int collection) {
+                        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (checkBox.isChecked()) {
+                                    mPresenter.dltNoParams(MyUrls.ADD_COLLECTION, RegisterBean.class);
+                                    int collection1 = ((RecommendBean) o).getResult().get(position).getCollection();
+                                    textView.setText(collection1 + "");
+                                } else {
+                                    mPresenter.dltNoParams(MyUrls.CANCEL_COLLECTION, RegisterBean.class);
+                                    int collection1 = ((RecommendBean) o).getResult().get(position).getCollection();
+                                    textView.setText(collection1 + "");
+                                }
+                            }
+                        });
+
                         int id = ((RecommendBean) o).getResult().get(position).getId();
                         Intent intent = new Intent(MyApp.getmContext(), DetailsActivity.class);
                         intent.putExtra("id", id);
                         startActivity(intent);
                     }
                 });
+            }
+        }
+        if (o instanceof RegisterBean) {
+            if (((RegisterBean) o).getStatus().equals("0000")) {
+                Toast.makeText(MyApp.getmContext(), ((RegisterBean) o).getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -135,9 +169,12 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.img_recommend_menu:
+                Intent intent1 = new Intent(MyApp.getmContext(), PlatesActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.img_recommend_search:
-
+                Intent intent = new Intent(MyApp.getmContext(), SearchActivity.class);
+                startActivity(intent);
                 break;
         }
     }

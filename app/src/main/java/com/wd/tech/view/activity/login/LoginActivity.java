@@ -1,6 +1,5 @@
 package com.wd.tech.view.activity.login;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -21,7 +20,7 @@ import com.wd.tech.model.bean.login.LoginBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.NetUtil;
 import com.wd.tech.utils.RsaCoder;
-import com.wd.tech.view.activity.MainActivity;
+import com.wd.tech.view.activity.information.MainActivity;
 import com.wd.tech.widget.MyApp;
 import com.wd.tech.widget.MyUrls;
 

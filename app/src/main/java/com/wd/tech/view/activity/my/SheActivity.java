@@ -1,19 +1,16 @@
 package com.wd.tech.view.activity.my;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.view.activity.MainActivity;
+import com.wd.tech.view.activity.information.MainActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SheActivity extends BaseActivity<TechPresenter> {

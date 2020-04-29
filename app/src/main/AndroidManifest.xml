@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wd.tech">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".widget.MyApp"
         android:allowBackup="true"
@@ -10,18 +19,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".base.IActivity"></activity>
-        <activity android:name=".view.activity.SearchActivity" />
-        <activity android:name=".view.activity.VipActivity" />
+        <activity android:name=".view.activity.information.PlateActivity"></activity>
+        <activity android:name=".view.activity.information.PlatesActivity" />
+        <activity android:name=".base.IActivity" />
+        <activity android:name=".view.activity.information.SearchActivity" />
+        <activity android:name=".view.activity.information.VipActivity" />
         <activity android:name=".view.activity.community.CommUserActivity" />
         <activity android:name=".view.activity.community.WriteFilmActivity" />
         <activity android:name=".view.activity.community.WritePostActivity" />
-        <activity android:name=".view.activity.DetailsActivity" />
-        <activity android:name=".view.activity.IntegralActivity" />
+        <activity android:name=".view.activity.information.DetailsActivity" />
+        <activity android:name=".view.activity.information.IntegralActivity" />
         <activity android:name=".view.activity.my.SheActivity" />
         <activity android:name=".view.activity.login.RegisterActivity" />
         <activity android:name=".view.activity.login.LoginActivity" />
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name=".view.activity.information.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,14 +40,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

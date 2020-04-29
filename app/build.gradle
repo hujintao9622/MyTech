@@ -86,4 +86,6 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:23.1.1'
     implementation project(path: ':swipelibrary')
+    // XRecyclerView
+    implementation 'com.jcodecraeer:xrecyclerview:1.6.0'
 }
