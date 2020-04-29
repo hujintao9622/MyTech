@@ -52,6 +52,8 @@ public interface MyUrls {
     String BASE_FIND_FRIEND="techApi/chat/verify/v1/searchFriend";
     //删除好友聊天记录
     String BASE_DELETE_FRIENDINFO="techApi/chat/verify/v1/deleteChatRecord";
+    //根据手机号
+    String BASE_SEUSER_BYPHONE="techApi/user/verify/v1/findUserByPhone";
 
     //社区
     //社区列表

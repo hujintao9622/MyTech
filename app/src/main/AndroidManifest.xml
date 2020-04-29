@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".base.IActivity"></activity>
+        <activity android:name=".view.activity.info.UserInfoMsActivity"></activity>
+        <activity android:name=".view.activity.info.InfoSelefriendActivity" />
+        <activity android:name=".base.IActivity" />
         <activity android:name=".view.activity.SearchActivity" />
         <activity android:name=".view.activity.VipActivity" />
         <activity android:name=".view.activity.community.CommUserActivity" />
@@ -21,7 +23,8 @@
         <activity android:name=".view.activity.my.SheActivity" />
         <activity android:name=".view.activity.login.RegisterActivity" />
         <activity android:name=".view.activity.login.LoginActivity" />
-        <activity android:name=".view.activity.MainActivity"
+        <activity
+            android:name=".view.activity.MainActivity"
             android:theme="@style/PicActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,5 +42,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
 </manifest>
