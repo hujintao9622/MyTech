@@ -1,8 +1,7 @@
-package com.wd.tech.view.activity;
+package com.wd.tech.view.activity.information;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -122,24 +120,39 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
                 tvDetailsSource.setText(((DetailsBean) o).getResult().getSource());
                 Log.e("TAG", "资讯ID: " + ((DetailsBean) o).getResult().getId());
                 Glide.with(this).load(((DetailsBean) o).getResult().getThumbnail()).into(imgDetailsThumbnail);
-                Document document = Jsoup.parseBodyFragment(((DetailsBean) o).getResult().getContent());
-                String text = document.text();
-                if (((DetailsBean) o).getResult().getReadPower() == 1) {
-                    // 有权限查看
-                    tvDetailsContent.setText(text);
+                if (!TextUtils.isEmpty(((DetailsBean) o).getResult().getContent())) {
+                    if (((DetailsBean) o).getResult().getReadPower() == 1) {
+                        // 有权限查看
+                        Document document = Jsoup.parseBodyFragment(((DetailsBean) o).getResult().getContent());
+                        String text = document.text();
+                        tvDetailsContent.setText(text);
+                        imgNoPay.setVisibility(View.GONE);
+                        btnNoPay.setVisibility(View.GONE);
+                    } else if (((DetailsBean) o).getResult().getReadPower() == 2) {
+                        // 没有权限查看
+                        tvDetailsContent.setMaxLines(12);
+                        tvDetailsContent.setEllipsize(TextUtils.TruncateAt.END);
+                        imgNoPay.setVisibility(View.VISIBLE);
+                        btnNoPay.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    tvDetailsContent.setVisibility(View.GONE);
                     imgNoPay.setVisibility(View.GONE);
                     btnNoPay.setVisibility(View.GONE);
-                } else if (((DetailsBean) o).getResult().getReadPower() == 2) {
-                    // 没有权限查看
-                    tvDetailsContent.setMaxLines(12);
-                    tvDetailsContent.setEllipsize(TextUtils.TruncateAt.END);
-                    imgNoPay.setVisibility(View.VISIBLE);
-                    btnNoPay.setVisibility(View.VISIBLE);
                 }
-                rvDetailsPlate.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-                rvDetailsPlate.setAdapter(new PlateAdapter(R.layout.item_details_plate, plateList));
-                rvDetailsInformationList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-                rvDetailsInformationList.setAdapter(new InfoListAdapter(R.layout.item_details_info_list, infoList));
+                if (!(((DetailsBean) o).getResult().getPlate() == null)) {
+                    rvDetailsPlate.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+                    rvDetailsPlate.setAdapter(new PlateAdapter(R.layout.item_details_plate, plateList));
+                } else {
+                    rvDetailsPlate.setVisibility(View.GONE);
+                }
+                if (!(((DetailsBean) o).getResult().getInformationList()== null)) {
+                    rvDetailsInformationList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+                    rvDetailsInformationList.setAdapter(new InfoListAdapter(R.layout.item_details_info_list, infoList));
+                } else {
+                    rvDetailsInformationList.setVisibility(View.GONE);
+                }
+
             }
         }
         if (o instanceof CommentBean) {

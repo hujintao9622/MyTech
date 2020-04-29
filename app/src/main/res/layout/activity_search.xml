@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.SearchActivity">
+    android:padding="@dimen/dp_12"
+    tools:context=".view.activity.information.SearchActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="搜索页面" />
+        android:layout_marginTop="@dimen/dp_28"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="@dimen/dp_285"
+            android:layout_height="@dimen/dp_34"
+            android:background="@drawable/et_bg"
+            android:padding="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_5"
+            android:textSize="@dimen/sp_14"
+            android:textColorHint="#666666"
+            android:hint="请输入要搜索的关键词"/>
+        <CheckBox
+            android:id="@+id/che_by_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:button="@null"
+            android:textSize="@dimen/sp_18"
+            android:textColor="#666666"
+            android:text="标题" />
+    </LinearLayout>
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xrv_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12" />
+
+
 
 </LinearLayout>

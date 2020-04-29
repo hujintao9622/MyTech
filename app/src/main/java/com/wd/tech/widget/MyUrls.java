@@ -33,6 +33,16 @@ public interface MyUrls {
     String USER_INTEGRAL = "techApi/user/verify/v1/findUserIntegral";
     // 用积分兑换资讯权限
     String PAY_INTEGRAL = "techApi/information/verify/v1/infoPayByIntegral";
+    // 查询所有版块
+    String ALL_INFO_PLATE = "techApi/information/v1/findAllInfoPlate";
+    // 根据标题模糊查询
+    String INFORMATION_BY_TITLE = "techApi/information/v1/findInformationByTitle";
+    // 根据作者名模糊查询
+    String INFORMATION_BY_SOURCE = "techApi/information/v1/findInformationBySource";
+    // 添加收藏
+    String ADD_COLLECTION = "techApi/user/verify/v1/addCollection";
+    // 取消收藏
+    String CANCEL_COLLECTION = "techApi/user/verify/v1/cancelCollection";
 
     //微信登录
     String BASE_WX_LOGIN="techApi/user/v1/weChatLogin";

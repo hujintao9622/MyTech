@@ -1,13 +1,8 @@
 package com.wd.tech.wxapi;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -15,11 +10,9 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
-import com.wd.tech.model.bean.login.LoginBean;
 import com.wd.tech.model.bean.wx.WXBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.view.activity.MainActivity;
-import com.wd.tech.view.activity.login.LoginActivity;
+import com.wd.tech.view.activity.information.MainActivity;
 import com.wd.tech.widget.MyApp;
 import com.wd.tech.widget.MyUrls;
 

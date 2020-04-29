@@ -10,6 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.information.PlateActivity"></activity>
+        <activity android:name=".view.activity.information.PlatesActivity" />
+        <activity android:name=".base.IActivity" />
+        <activity android:name=".view.activity.information.SearchActivity" />
+        <activity android:name=".view.activity.information.VipActivity" />
         <activity android:name=".view.activity.info.UserInfoMsActivity"></activity>
         <activity android:name=".view.activity.info.InfoSelefriendActivity" />
         <activity android:name=".base.IActivity" />
@@ -18,11 +23,13 @@
         <activity android:name=".view.activity.community.CommUserActivity" />
         <activity android:name=".view.activity.community.WriteFilmActivity" />
         <activity android:name=".view.activity.community.WritePostActivity" />
-        <activity android:name=".view.activity.DetailsActivity" />
-        <activity android:name=".view.activity.IntegralActivity" />
+        <activity android:name=".view.activity.information.DetailsActivity" />
+        <activity android:name=".view.activity.information.IntegralActivity" />
         <activity android:name=".view.activity.my.SheActivity" />
         <activity android:name=".view.activity.login.RegisterActivity" />
         <activity android:name=".view.activity.login.LoginActivity" />
+        <activity android:name=".view.activity.information.MainActivity">
+        <activity android:name=".view.activity.MainActivity"
         <activity
             android:name=".view.activity.MainActivity"
             android:theme="@style/PicActivity">
@@ -34,6 +41,7 @@
         </activity>
         <activity android:name=".arc.LivenessActivity" />
     </application>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
