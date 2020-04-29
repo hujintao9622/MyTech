@@ -31,7 +31,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.RequestBody;
-
+//发表帖子
 public class WritePostActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.comeback)

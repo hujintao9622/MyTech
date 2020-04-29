@@ -1,22 +1,34 @@
 package com.wd.tech.view.fragment;
 
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
+import com.wd.tech.model.bean.community.CommunityFlimBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.fragment.info.InfoItFragment;
 import com.wd.tech.view.fragment.info.LinkManFragment;
+import com.wd.tech.widget.MyUrls;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -35,6 +47,7 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
     ImageView jia;
     @BindView(R.id.info_vp)
     ViewPager infoVp;
+    private PopupWindow popupWindow;
 
     @Override
     protected void initView(View view) {
@@ -117,5 +130,38 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
 
     @OnClick(R.id.jia)
     public void onViewClicked() {
+
+    }
+    //弹出框
+    private void showPopupWindow(int id) {
+        //加载布局
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.popupjia, null);
+        popupWindow = new PopupWindow(view,
+                ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setContentView(view);
+        //设置各个控件的点击响应
+        final EditText editText = view.findViewById(R.id.et);
+        Button btn = view.findViewById(R.id.bt);
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (popupWindow != null && popupWindow.isShowing()) {
+                    popupWindow.dismiss();
+                    popupWindow = null;
+                }
+                return false;
+            }
+        });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //是否具有获取焦点的能力
+        popupWindow.setFocusable(true);
+        //显示PopupWindow
+        View rootview = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, null);
+        popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
 }

@@ -5,8 +5,10 @@ import android.content.Context;
 import android.util.Log;
 
 import com.abner.ming.SlideFinishManager;
+import com.example.arclibrary.builder.AcrFaceManagerBuilder;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.wd.tech.arc.Constants;
 
 /**
  * date:2020/4/18 0018
@@ -25,6 +27,7 @@ public class MyApp extends Application {
         super.onCreate();
         mContext=this;
         registToWX();
+        initArcFace();
         SlideFinishManager.getInstance().init(this);
 
     }
@@ -33,5 +36,15 @@ public class MyApp extends Application {
         mWxApi = WXAPIFactory.createWXAPI(this, "wx4c96b6b8da494224", true);
         // 将该app注册到微信
         mWxApi.registerApp("wx4c96b6b8da494224");
+    }
+    private void initArcFace() {
+        new AcrFaceManagerBuilder().setContext(this)
+                .setFreeSdkAppId(Constants.FREESDKAPPID)
+                .setFdSdkKey(Constants.FDSDKKEY)
+                .setFtSdkKey(Constants.FTSDKKEY)
+                .setFrSdkKey(Constants.FRSDKKEY)
+                .setLivenessAppId(Constants.LIVENESSAPPID)
+                .setLivenessSdkKey(Constants.LIVENESSSDKKEY)
+                .create();
     }
 }

@@ -1,17 +1,26 @@
 package com.wd.tech.view.fragment.info;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
+import com.wd.tech.model.bean.community.CommunityZanBean;
+import com.wd.tech.model.bean.info.FriendListBean;
 import com.wd.tech.model.bean.info.FriendNoticeBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.view.activity.MainActivity;
 import com.wd.tech.view.adapter.InfoItAdapter;
 import com.wd.tech.widget.MyUrls;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
@@ -73,7 +82,6 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
                 ifitRc.setSwipeMenuCreator(new SwipeMenuCreator() {
                     @Override
                     public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
-
                         @SuppressLint("ResourceType") SwipeMenuItem deleteItem = new SwipeMenuItem(getContext())
                                 .setBackground(R.drawable.red)
                                 .setText("删除")
@@ -86,7 +94,11 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
                     @Override
                     public void onItemClick(SwipeMenuBridge menuBridge) {
                         menuBridge.closeMenu();
-                        int adapterPosition = menuBridge.getAdapterPosition(); // RecyclerView的Item的position。
+                        int adapterPosition = menuBridge.getAdapterPosition();
+                        int fromUid = result.get(adapterPosition).getFromUid();
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("fromUid",fromUid);
+                        mPresenter.dltDoParams(MyUrls.BASE_DELETE_FRIENDINFO, CommunityZanBean.class,map);
                         result.remove(adapterPosition);
                         infoItAdapter.notifyDataSetChanged();
                         Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();

@@ -8,41 +8,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_200"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:id="@+id/iv_title"/>
-    <ImageView
+    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_60"
-        android:background="@drawable/comuserback"
+        android:layout_height="@dimen/dp_70"
         android:layout_marginTop="@dimen/dp_180"
-        />
-    <ImageView
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:id="@+id/iv_head"
-        android:layout_marginTop="@dimen/dp_170"
-        android:layout_marginLeft="@dimen/dp_40"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_186"
-        android:layout_marginLeft="@dimen/dp_130"
-        android:id="@+id/name"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_210"
-        android:layout_marginLeft="@dimen/dp_130"
-        android:id="@+id/desion"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/friend_community_btn_more_n_hdpi"
-        android:layout_marginTop="@dimen/dp_210"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/dp_20"
-        android:id="@+id/more"/>
+        android:id="@+id/swrc"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

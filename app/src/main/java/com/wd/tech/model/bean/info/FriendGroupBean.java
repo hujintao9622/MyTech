@@ -107,4 +107,5 @@ public class FriendGroupBean {
             this.groupName = groupName;
         }
     }
+
 }

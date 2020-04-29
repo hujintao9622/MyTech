@@ -60,6 +60,8 @@ public interface MyUrls {
     String BASE_FINDMAN_BYGROUP="techApi/chat/verify/v1/findFriendListByGroupId";
     //查询我的好友列表 get searchName
     String BASE_FIND_FRIEND="techApi/chat/verify/v1/searchFriend";
+    //删除好友聊天记录
+    String BASE_DELETE_FRIENDINFO="techApi/chat/verify/v1/deleteChatRecord";
 
     //社区
     //社区列表

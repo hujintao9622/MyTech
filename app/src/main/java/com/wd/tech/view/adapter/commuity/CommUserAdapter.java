@@ -2,6 +2,7 @@ package com.wd.tech.view.adapter.commuity;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.wd.tech.utils.NetUtil;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * date:2020/4/26 0026
@@ -41,15 +43,50 @@ public class CommUserAdapter extends RecyclerView.Adapter<CommUserAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         CommUserBean.ResultBean.CommunityUserPostVoListBean listBean = list.get(position);
-        holder.content.setText(listBean.getContent());
-        NetUtil.getInstance().getPhoto(listBean.getFile(),holder.file);
+        String content = listBean.getContent();
+        holder.content.setText(content+"");
         int great = listBean.getWhetherGreat();
         if (great==1){
             holder.zan.setImageResource(R.drawable.common_icon_praise_s_hdpi);
         }else {
             holder.zan.setImageResource(R.drawable.common_icon_prise_n_hdpi);
         }
-
+        holder.zanNum.setText(listBean.getPraise()+"");
+        holder.plNum.setText(listBean.getComment()+"");
+        String file = listBean.getFile();
+        if (file != null && !file.equals("")) {
+            holder.imLl.setVisibility(View.VISIBLE);
+            NetUtil.getInstance().getPhoto(file, holder.file);
+        } else {
+            holder.imLl.setVisibility(View.GONE);
+        }
+        //点击图片
+        holder.file.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(0,position);
+                }
+            }
+        });
+        //点赞
+        holder.zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(1,position);
+                }
+            }
+        });
+        //点击评论
+        holder.pl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(2,position);
+                }
+            }
+        });
     }
 
     @Override
@@ -74,6 +111,16 @@ public class CommUserAdapter extends RecyclerView.Adapter<CommUserAdapter.MyView
         TextView zanNum;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
         }
+    }
+    OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public interface OnClickListener{
+        void onClick(int tag,int tion);
     }
 }

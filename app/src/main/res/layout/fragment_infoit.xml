@@ -3,15 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:gravity="center_horizontal"
     android:layout_height="match_parent">
-    <EditText
-        android:drawableLeft="@drawable/common_nav_btn_search_n_xxhdpi"
-        android:drawablePadding="@dimen/dp_10"
-        android:paddingLeft="@dimen/dp_10"
-        android:layout_width="@dimen/dp_300"
-        android:background="@drawable/serch"
-        android:layout_height="@dimen/dp_30"
-        android:hint="搜索"
-        android:layout_marginTop="@dimen/dp_10"/>
     <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dp_10"
