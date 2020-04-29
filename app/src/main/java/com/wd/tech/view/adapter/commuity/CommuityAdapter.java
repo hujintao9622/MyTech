@@ -115,8 +115,12 @@ public class CommuityAdapter extends RecyclerView.Adapter<CommuityAdapter.ViewHo
         holder.plNull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onClickListener != null) {
-                    onClickListener.onClick(2,position);
+                if (holder.plNull.getText().toString().trim().equals("点击查看更多评论")){
+                    if (onClickListener != null) {
+                        onClickListener.onClick(2,position);
+                    }
+                }else {
+                    return;
                 }
             }
         });

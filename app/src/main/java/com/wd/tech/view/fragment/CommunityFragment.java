@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -94,7 +95,6 @@ public class CommunityFragment extends BaseFragment<TechPresenter> {
                             //点赞
                             HashMap<String, Object> map = new HashMap<>();
                             map.put("communityId", result.get(position).getId());
-                            Log.e("xx",result.get(position).getId()+"");
                             if (result.get(position).getWhetherGreat() == 1) {
                                 mPresenter.dltDoParams(MyUrls.BASE_DELETE_ZAN, CommunityZanBean.class, map);
                             } else {
@@ -114,6 +114,7 @@ public class CommunityFragment extends BaseFragment<TechPresenter> {
                             startActivity(intent);
                             break;
                         case 3:
+                            //查询用户帖子
                             Intent user = new Intent(getContext(), CommUserActivity.class);
                             user.putExtra("uid",position);
                             startActivity(user);
@@ -161,6 +162,16 @@ public class CommunityFragment extends BaseFragment<TechPresenter> {
         //设置各个控件的点击响应
         final EditText editText = view.findViewById(R.id.et);
         Button btn = view.findViewById(R.id.bt);
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (mPopWindow != null && mPopWindow.isShowing()) {
+                    mPopWindow.dismiss();
+                    mPopWindow = null;
+                }
+                return false;
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

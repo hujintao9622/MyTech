@@ -40,7 +40,7 @@ import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-
+//发表帖子
 public class WritePostActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.comeback)

@@ -14,8 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.arclibrary.manager.ArcFaceManager;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.wd.tech.R;
+import com.wd.tech.arc.LivenessActivity;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.model.bean.login.LoginBean;
 import com.wd.tech.presenter.TechPresenter;
@@ -143,7 +145,8 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
                 finish();
                 break;
             case R.id.face:
-
+                LivenessActivity.flag = 2;
+                startActivity(LoginActivity.this, LivenessActivity.class);
                 break;
         }
     }

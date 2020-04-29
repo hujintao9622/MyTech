@@ -27,8 +27,9 @@ import butterknife.ButterKnife;
  * author:胡锦涛(Administrator)
  * function:
  */
-public class FriendGroupAdapter extends RecyclerView.Adapter<FriendGroupAdapter.GroupViewHolder> {
-
+public class FriendGroupAdapter  {
+/*
+extends RecyclerView.Adapter<FriendGroupAdapter.GroupViewHolder>
     private List<FriendGroupBean.ResultBean> list=new ArrayList<>();
     List<FriendListBean.ResultBean> child=new ArrayList<>();
     public FriendGroupAdapter(List<FriendGroupBean.ResultBean> group) {
@@ -112,5 +113,5 @@ public class FriendGroupAdapter extends RecyclerView.Adapter<FriendGroupAdapter.
 
     public interface OnClickListener{
         void onClick(int position,int groupId);
-    }
+    }*/
 }

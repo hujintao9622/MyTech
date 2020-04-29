@@ -22,7 +22,8 @@ import butterknife.ButterKnife;
  * author:胡锦涛(Administrator)
  * function:
  */
-public class FriendChildAdapter extends RecyclerView.Adapter<FriendChildAdapter.ViewHolder>{
+public class FriendChildAdapter  extends RecyclerView.Adapter<FriendChildAdapter.ViewHolder>{
+
     private List<FriendListBean.ResultBean> list;
 
     public FriendChildAdapter(List<FriendListBean.ResultBean> child) {

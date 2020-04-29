@@ -1,2 +1,2 @@
 rootProject.name='MyTech'
-include ':app', ':swipelibrary'
+include ':app', ':swipelibrary', ':arclibrary'

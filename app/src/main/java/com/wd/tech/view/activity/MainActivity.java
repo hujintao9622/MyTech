@@ -2,7 +2,10 @@ package com.wd.tech.view.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -239,5 +242,11 @@ public class MainActivity extends BaseActivity<TechPresenter> {
                 startActivity(this, SheActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
     }
 }

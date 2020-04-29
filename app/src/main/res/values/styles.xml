@@ -13,5 +13,10 @@
     <style name="MyEditText" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/pink</item>
     </style>
-
+    <style name="PicActivity" parent="AppTheme">
+        <!--<item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowBackground">@drawable/yindao</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

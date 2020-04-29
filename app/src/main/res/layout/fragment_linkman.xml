@@ -21,7 +21,7 @@
             android:text="群组"
             android:gravity="center_vertical"
             android:drawableLeft="@drawable/nav_btn_setting_n_hdpi"/>
-    <androidx.recyclerview.widget.RecyclerView
+    <ExpandableListView
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_height="match_parent"
