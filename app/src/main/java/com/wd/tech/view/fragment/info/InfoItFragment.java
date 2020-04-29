@@ -20,7 +20,6 @@ import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.model.bean.info.FriendListBean;
 import com.wd.tech.model.bean.info.FriendNoticeBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.view.activity.MainActivity;
 import com.wd.tech.view.adapter.InfoItAdapter;
 import com.wd.tech.widget.MyUrls;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
