@@ -43,6 +43,8 @@ public interface MyUrls {
     String ADD_COLLECTION = "techApi/user/verify/v1/addCollection";
     // 取消收藏
     String CANCEL_COLLECTION = "techApi/user/verify/v1/cancelCollection";
+    // 查询所有会员商品
+    String FIND_VIP_LIST = "techApi/tool/v1/findVipCommodityList";
 
     //微信登录
     String BASE_WX_LOGIN="techApi/user/v1/weChatLogin";

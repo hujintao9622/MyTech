@@ -208,7 +208,7 @@ public class DetailsBean {
             return yuanCost;
         }
 
-        public void setYuanCost(int yuanCost) {
+        public void setYuanCost(double yuanCost) {
             this.yuanCost = yuanCost;
         }
 

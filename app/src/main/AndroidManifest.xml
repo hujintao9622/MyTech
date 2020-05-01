@@ -26,6 +26,8 @@
         <activity android:name=".view.activity.my.SheActivity" />
         <activity android:name=".view.activity.login.RegisterActivity" />
         <activity android:name=".view.activity.login.LoginActivity" />
+        <activity android:name=".view.activity.information.MainActivity"
+            android:theme="@style/PicActivity">
         <activity
             android:name=".view.activity.information.MainActivity">
             <intent-filter>
@@ -45,7 +47,5 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>
