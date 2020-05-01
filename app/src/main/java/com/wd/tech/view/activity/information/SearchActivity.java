@@ -1,19 +1,18 @@
 package com.wd.tech.view.activity.information;
 
-import android.os.Bundle;
+
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.jcodecraeer.xrecyclerview.progressindicator.indicator.BallSpinFadeLoaderIndicator;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.base.BaseHuaActivity;
@@ -30,7 +29,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SearchActivity extends BaseActivity<TechPresenter> {
+public class SearchActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.et_search)
     EditText etSearch;

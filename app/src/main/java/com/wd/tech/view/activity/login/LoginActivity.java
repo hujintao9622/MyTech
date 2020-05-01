@@ -130,7 +130,6 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
                 break;
             case R.id.wx:
                 boolean b = MyApp.mWxApi.isWXAppInstalled();
-                Log.e("code",b+"");
                 if (b){
                     //发起微信请求
                     SendAuth.Req req = new SendAuth.Req();
