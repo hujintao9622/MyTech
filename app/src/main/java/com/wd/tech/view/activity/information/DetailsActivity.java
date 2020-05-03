@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
+import com.wd.tech.base.BaseHuaActivity;
 import com.wd.tech.contract.TechContract;
 import com.wd.tech.model.bean.information.CommentBean;
 import com.wd.tech.model.bean.information.DetailsBean;
@@ -38,7 +39,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 
-public class DetailsActivity extends BaseActivity<TechPresenter> implements TechContract.IView {
+public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
 
     @BindView(R.id.tv_details_title)
     TextView tvDetailsTitle;
@@ -70,6 +71,7 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
         // 资讯详情
@@ -118,7 +120,6 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
                 String time = format.format(new Date(((DetailsBean) o).getResult().getReleaseTime()));
                 tvDetailsTime.setText(time);
                 tvDetailsSource.setText(((DetailsBean) o).getResult().getSource());
-                Log.e("TAG", "资讯ID: " + ((DetailsBean) o).getResult().getId());
                 Glide.with(this).load(((DetailsBean) o).getResult().getThumbnail()).into(imgDetailsThumbnail);
                 if (!TextUtils.isEmpty(((DetailsBean) o).getResult().getContent())) {
                     if (((DetailsBean) o).getResult().getReadPower() == 2) {

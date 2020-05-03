@@ -42,19 +42,33 @@ public class RecommendAdapter extends BaseQuickAdapter<RecommendBean.ResultBean,
         helper.setText(R.id.tv_recommend_praise, item.getCollection() + "");
         helper.setText(R.id.tv_recommend_share, item.getShare() + "");
         CheckBox checkBox = helper.getView(R.id.che_recommend_praise);
+        int whetherCollection = item.getWhetherCollection();
+        if (whetherCollection==1){
+            checkBox.setChecked(true);
+        }else {
+            checkBox.setChecked(false);
+        }
         if (mItemClickListener != null) {
             helper.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mItemClickListener.onItemClick(helper.getPosition(), helper.getView(R.id.che_recommend_praise), helper.getView(R.id.tv_recommend_praise), item.getCollection());
+                    mItemClickListener.onItemClick(0, item.getId(),helper.getPosition());
                 }
             });
         }
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onItemClick(1,item.getId(),helper.getPosition());
+                }
+            }
+        });
     }
     // 利用接口 -> 给RecyclerView设置点击事件
     private ItemClickListener mItemClickListener;
     public interface ItemClickListener {
-        public void onItemClick(int position, CheckBox checkBox, TextView textView, int collection);
+        public void onItemClick(int position,int id,int postino);
     }
     public void setOnItemClickListene(ItemClickListener itemClickListener) {
         this.mItemClickListener = itemClickListener;

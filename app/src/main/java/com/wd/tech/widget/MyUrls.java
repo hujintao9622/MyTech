@@ -52,6 +52,10 @@ public interface MyUrls {
 
     //微信登录
     String BASE_WX_LOGIN="techApi/user/v1/weChatLogin";
+    //下单
+    String BASE_BUYORDER="techApi/tool/verify/v1/buyVip";
+    //支付
+    String BASE_PAY="techApi/tool/verify/v1/pay";
 
     //我的
     //根据ID查询信息

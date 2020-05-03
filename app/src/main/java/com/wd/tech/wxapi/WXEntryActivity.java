@@ -2,6 +2,7 @@ package com.wd.tech.wxapi;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -51,6 +52,7 @@ public class WXEntryActivity extends BaseActivity<TechPresenter> implements IWXA
                         map.put("ak",1);
                         HashMap<String,Object> map1=new HashMap<>();
                         map1.put("code",code);
+                        Log.e("xx",code+"");
                         mPresenter.postHeadParams(MyUrls.BASE_WX_LOGIN, WXBean.class,map,map1);
                         break;
                     case 2:

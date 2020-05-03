@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
+import com.wd.tech.base.BaseHuaActivity;
 import com.wd.tech.model.bean.login.RegisterBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.NetUtil;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 //注册
-public class RegisterActivity extends BaseActivity<TechPresenter> {
+public class RegisterActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.register_name)
     EditText registerName;

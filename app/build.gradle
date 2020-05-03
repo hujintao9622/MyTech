@@ -103,4 +103,10 @@ dependencies {
     //人脸依赖
     implementation 'com.github.tyhjh:PermissionUtil:v1.0.5'
     implementation 'com.github.tyhjh:picturePickUtil:v1.0.6'
+    // 支付宝 SDK AAR 包所需的配置
+    compile (name: 'alipaySdk-15.7.5-20200422171619', ext: 'aar')
+    //noinspection GradleCompatible
+    compile 'com.android.support:support-v4:28.0.0'
+    //noinspection GradleCompatible
+    compile "com.android.support:appcompat-v7:28.0.0"
 }

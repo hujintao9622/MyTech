@@ -129,26 +129,26 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
 
                 recommendAdapter.setOnItemClickListene(new RecommendAdapter.ItemClickListener() {
                     @Override
-                    public void onItemClick(int position, CheckBox checkBox, TextView textView, int collection) {
-                        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (checkBox.isChecked()) {
-                                    mPresenter.dltNoParams(MyUrls.ADD_COLLECTION, RegisterBean.class);
-                                    int collection1 = ((RecommendBean) o).getResult().get(position).getCollection();
-                                    textView.setText(collection1 + "");
-                                } else {
-                                    mPresenter.dltNoParams(MyUrls.CANCEL_COLLECTION, RegisterBean.class);
-                                    int collection1 = ((RecommendBean) o).getResult().get(position).getCollection();
-                                    textView.setText(collection1 + "");
+                    public void onItemClick(int tag, int id,int position) {
+                        switch (tag){
+                            case 0:
+                                Intent intent = new Intent(MyApp.getmContext(), DetailsActivity.class);
+                                intent.putExtra("id", id);
+                                startActivity(intent);
+                                break;
+                            case 1:
+                                int whetherCollection = recommendList.get(position).getWhetherCollection();
+                                HashMap<String, Object> map = new HashMap<>();
+                                map.put("infoId",id);
+                                if (whetherCollection==1){
+                                    mPresenter.dltDoParams(MyUrls.CANCEL_COLLECTION, RegisterBean.class,map);
+                                }else {
+                                    mPresenter.postDoParams(MyUrls.ADD_COLLECTION, RegisterBean.class,map);
                                 }
-                            }
-                        });
+                                break;
+                        }
 
-                        int id = ((RecommendBean) o).getResult().get(position).getId();
-                        Intent intent = new Intent(MyApp.getmContext(), DetailsActivity.class);
-                        intent.putExtra("id", id);
-                        startActivity(intent);
+
                     }
                 });
             }
@@ -156,6 +156,12 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
         if (o instanceof RegisterBean) {
             if (((RegisterBean) o).getStatus().equals("0000")) {
                 Toast.makeText(MyApp.getmContext(), ((RegisterBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("plateId", i1);
+                map.put("page", "1");
+                map.put("count", "10");
+                // 资讯展示列表
+                mPresenter.getDoParams(MyUrls.INFO_RECOMMEND, RecommendBean.class, map);
             }
         }
     }

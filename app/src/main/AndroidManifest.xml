@@ -10,15 +10,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".widget.MyApp"
@@ -28,11 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.my.UserTaskActivity"></activity>
-        <activity android:name=".view.activity.my.MyIntegralActivity" />
-        <activity android:name=".view.activity.information.TieziActivity" />
-        <activity android:name=".view.activity.my.CollectActivity" />
-        <activity android:name=".view.activity.information.PlateActivity" />
+        <activity android:name=".view.activity.information.PlateActivity"></activity>
         <activity android:name=".view.activity.information.PlatesActivity" />
         <activity android:name=".base.IActivity" />
         <activity android:name=".view.activity.information.SearchActivity" />
@@ -45,12 +32,7 @@
         <activity android:name=".view.activity.my.SheActivity" />
         <activity android:name=".view.activity.login.RegisterActivity" />
         <activity android:name=".view.activity.login.LoginActivity" />
-        <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:exported="true"
-            android:theme="@style/BackActivity" />
-        <activity
-            android:name=".view.activity.information.MainActivity"
+        <activity android:name=".view.activity.information.MainActivity"
             android:theme="@style/PicActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,4 +43,13 @@
         <activity android:name=".arc.LivenessActivity" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>
