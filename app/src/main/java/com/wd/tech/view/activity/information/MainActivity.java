@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +24,10 @@ import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.activity.login.LoginActivity;
+import com.wd.tech.view.activity.my.CollectActivity;
+import com.wd.tech.view.activity.my.MyIntegralActivity;
 import com.wd.tech.view.activity.my.SheActivity;
+import com.wd.tech.view.activity.my.UserTaskActivity;
 import com.wd.tech.view.fragment.CommunityFragment;
 import com.wd.tech.view.fragment.ConsultFragment;
 import com.wd.tech.view.fragment.InfoFragment;
@@ -149,8 +151,8 @@ public class MainActivity extends BaseActivity<TechPresenter> {
         vp.setCurrentItem(0);
         Intent intent = getIntent();
         if (intent != null) {
-            boolean b = intent.getBooleanExtra("bb",false);
-            if (b){
+            boolean b = intent.getBooleanExtra("bb", false);
+            if (b) {
                 rg.check(rg.getChildAt(2).getId());
                 vp.setCurrentItem(2);
             }
@@ -168,10 +170,10 @@ public class MainActivity extends BaseActivity<TechPresenter> {
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
                 //主内容随着菜单移动
                 int width = drawerView.getWidth();
-                cont.setTranslationX(width*slideOffset);
+                cont.setTranslationX(width * slideOffset);
                 //初始移动
                 double v = width * (1 - 0.618) * (1 - slideOffset);
-                meun.setPadding((int)v,0,0,0);
+                meun.setPadding((int) v, 0, 0, 0);
             }
 
             @Override
@@ -230,7 +232,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     }
 
 
-    @OnClick({R.id.login_iv, R.id.login, R.id.she})
+    @OnClick({R.id.login_iv, R.id.login, R.id.she, R.id.shou, R.id.guan, R.id.tie, R.id.tong, R.id.ji, R.id.ren})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_iv:
@@ -240,6 +242,22 @@ public class MainActivity extends BaseActivity<TechPresenter> {
                 break;
             case R.id.she:
                 startActivity(this, SheActivity.class);
+                break;
+            case R.id.shou:
+                startActivity(this, CollectActivity.class);
+                break;
+            case R.id.guan:
+                break;
+            case R.id.tie:
+                startActivity(this, TieziActivity.class);
+                break;
+            case R.id.tong:
+                break;
+            case R.id.ji:
+                startActivity(this, MyIntegralActivity.class);
+                break;
+            case R.id.ren:
+                startActivity(this, UserTaskActivity.class);
                 break;
         }
     }

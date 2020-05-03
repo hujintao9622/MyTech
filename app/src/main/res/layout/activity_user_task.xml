@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.my.UserTaskActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#666666"
+        android:text="日常任务" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="签到" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+10" />
+
+        <TextView
+            android:id="@+id/status1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="首评" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="发帖" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="分享" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="查看广告" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#666666"
+        android:text="一次性任务" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="完善信息" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+50" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_1"
+        android:background="#fff"
+        android:padding="@dimen/dp_24">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#333333"
+            android:text="绑定微信" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_16"
+            android:textColor="#ff5757"
+            android:gravity="center"
+            android:text="+50" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
+            android:layout_alignParentRight="true"
+            android:text="未完成" />
+    </RelativeLayout>
+</LinearLayout>

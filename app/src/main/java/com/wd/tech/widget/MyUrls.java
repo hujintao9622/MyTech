@@ -39,6 +39,10 @@ public interface MyUrls {
     String INFORMATION_BY_TITLE = "techApi/information/v1/findInformationByTitle";
     // 根据作者名模糊查询
     String INFORMATION_BY_SOURCE = "techApi/information/v1/findInformationBySource";
+    // 资讯点赞
+    String ADD_GREAT_RECORD = "techApi/information/verify/v1/addGreatRecord";
+    // 取消点赞
+    String CANCEL_GREAT = "techApi/information/verify/v1/cancelGreat";
     // 添加收藏
     String ADD_COLLECTION = "techApi/user/verify/v1/addCollection";
     // 取消收藏
@@ -52,6 +56,18 @@ public interface MyUrls {
     //我的
     //根据ID查询信息
     String BASE_BYID="techApi/user/verify/v1/getUserInfoByUserId";
+    // 用户收藏列表
+    String ALL_INFO_COLLECTION = "techApi/user/verify/v1/findAllInfoCollection";
+    // 根据用户ID查询用户信息
+    String INFO_BY_USER_ID = "techApi/user/verify/v1/getUserInfoByUserId";
+    // 我的帖子
+    String MY_POST_LIST = "techApi/community/verify/v1/findMyPostById";
+    // 查询用户积分
+    String FIND_USER_INTEGRAL = "techApi/user/verify/v1/findUserIntegral";
+    // 查询用户积分明细
+    String FIND_USER_INTEGRAL_RECORD = "techApi/user/verify/v1/findUserIntegralRecord";
+    // 我的任务列表
+    String USER_TASK_LIST = "techApi/user/verify/v1/findUserTaskList";
 
     //消息
     //查询好友通知

@@ -205,7 +205,7 @@ public class DetailsActivity extends BaseActivity<TechPresenter> implements Tech
                 intent.putExtra("time", result.getReleaseTime());
                 intent.putExtra("praise", result.getPraise());
                 intent.putExtra("share", result.getShare());
-                intent.putExtra("yuanCost", result.getYuanCost());
+                intent.putExtra("yuanCost", 1);
                 intent.putExtra("id", id);
                 startActivity(intent);
             }
