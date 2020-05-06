@@ -1,9 +1,12 @@
 package com.wd.tech.view.activity.login;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Camera;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +15,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.arclibrary.manager.ArcFaceManager;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.wd.tech.R;
 import com.wd.tech.arc.LivenessActivity;
@@ -30,6 +31,8 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.api.BasicCallback;
 
 public class LoginActivity extends BaseActivity<TechPresenter> {
 
@@ -44,7 +47,7 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     @BindView(R.id.btn_login)
     Button btnLogin;
     private SharedPreferences sp;
-
+    Camera camera=null;
     @Override
     protected void initData() {
         imgLoginEye.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -81,15 +84,35 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     protected void DestroyActivity() {
 
     }
-
     @Override
     public void onSuccess(Object o) {
         if (o instanceof LoginBean && TextUtils.equals("0000", ((LoginBean) o).getStatus())) {
             LoginBean.ResultBean resultBean = ((LoginBean) o).getResult();
+            JMessageClient.login(resultBean.getPhone(), MyApp.s1, new BasicCallback() {
+                @Override
+                public void gotResult(int i, String s) {
+                    switch (i) {
+                        case 801003:
+                            Toast.makeText(LoginActivity.this, "极光用户名不存在", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 871301:
+                            Toast.makeText(LoginActivity.this, "极光密码格式错误", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 801004:
+                            Toast.makeText(LoginActivity.this, "极光密码错误", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 0:
+                            Toast.makeText(LoginActivity.this, "极光登陆成功", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            });
+
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("headPic", resultBean.getHeadPic());
             editor.putString("nickName", resultBean.getNickName());
             editor.putInt("userId", resultBean.getUserId());
+            editor.putString("phone", resultBean.getPhone());
             editor.putString("sessionId", resultBean.getSessionId());
             editor.putBoolean("b", true);
             editor.commit();

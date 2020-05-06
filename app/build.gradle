@@ -10,13 +10,17 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
             //选择要添加的对应cpu类型的.so库。   // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
-            abiFilters 'armeabi-v7a' //'armeabi-v7a',  'arm64-v8a'
-            abiFilters 'armeabi' //'armeabi-v7a',  'arm64-v8a'
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
         }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "d4cf77f0d3b85e9edc540dee", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default" //暂时填写默认值即可.
+        ]
     }
 
     buildTypes {
@@ -104,9 +108,14 @@ dependencies {
     implementation 'com.github.tyhjh:PermissionUtil:v1.0.5'
     implementation 'com.github.tyhjh:picturePickUtil:v1.0.6'
     // 支付宝 SDK AAR 包所需的配置
-    compile (name: 'alipaySdk-15.7.5-20200422171619', ext: 'aar')
+    compile(name: 'alipaySdk-15.7.5-20200422171619', ext: 'aar')
     //noinspection GradleCompatible
-    compile 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     //noinspection GradleCompatible
-    compile "com.android.support:appcompat-v7:28.0.0"
+    implementation "com.android.support:appcompat-v7:28.0.0"
+    //解决方法过多
+    implementation 'com.android.support:multidex:1.0.3'
+    //极光
+    implementation 'cn.jiguang.sdk:jmessage:2.9.0'  // 此处以JMessage 2.9.0 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.0.0'  // 此处以JCore 2.0.0 版本为例。
 }

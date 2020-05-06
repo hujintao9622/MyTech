@@ -112,6 +112,7 @@ public class NetUtil {
                                 Request request = chain.request().newBuilder()
                                         .addHeader("userId", uid+"")
                                         .addHeader("sessionId", sid)
+                                        .addHeader("ak",1+"")
                                         .build();
                                 return  chain.proceed(request);
                             }else {

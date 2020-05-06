@@ -1,6 +1,7 @@
 package com.wd.tech.view.fragment.info;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.model.bean.info.FriendListBean;
 import com.wd.tech.model.bean.info.FriendNoticeBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.view.activity.info.ChatMsgActivity;
 import com.wd.tech.view.adapter.InfoItAdapter;
 import com.wd.tech.widget.MyUrls;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
@@ -78,6 +80,16 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
             if (((FriendNoticeBean) o).getResult().size()>0){
                 List<FriendNoticeBean.ResultBean> result = ((FriendNoticeBean) o).getResult();
                 InfoItAdapter infoItAdapter = new InfoItAdapter(result);
+                infoItAdapter.setOnClickListener(new InfoItAdapter.OnClickListener() {
+                    @Override
+                    public void onClick(int friendId,String head,String nickName) {
+                        Intent intent = new Intent(getContext(), ChatMsgActivity.class);
+                        intent.putExtra("id",friendId);
+                        intent.putExtra("head",head);
+                        intent.putExtra("name",nickName);
+                        startActivity(intent);
+                    }
+                });
                 ifitRc.setSwipeMenuCreator(new SwipeMenuCreator() {
                     @Override
                     public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
@@ -100,11 +112,14 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
                         mPresenter.dltDoParams(MyUrls.BASE_DELETE_FRIENDINFO, CommunityZanBean.class,map);
                         result.remove(adapterPosition);
                         infoItAdapter.notifyDataSetChanged();
-                        Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 ifitRc.setAdapter(infoItAdapter);
             }
+        }
+        if (o instanceof CommunityZanBean&&TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
+            Toast.makeText(getContext(), ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

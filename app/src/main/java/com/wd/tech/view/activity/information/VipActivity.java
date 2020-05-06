@@ -139,7 +139,6 @@ public class VipActivity extends BaseHuaActivity<TechPresenter> {
             if (((VipListBean) o).getStatus().equals("0000")) {
                 ArrayList<VipListBean.ResultBean> list = (ArrayList<VipListBean.ResultBean>) ((VipListBean) o).getResult();
                 rvVip.setLayoutManager(new GridLayoutManager(this, 2));
-                ;
                 VipListAdapter vipListAdapter = new VipListAdapter(R.layout.item_vip_list, list);
                 rvVip.setAdapter(vipListAdapter);
                 vipListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -217,6 +216,10 @@ public class VipActivity extends BaseHuaActivity<TechPresenter> {
         }else if (payType==2){
              mess="确认使用支付宝支付";
          }
+        if (comId==-1){
+            Toast.makeText(VipActivity.this, "请选择会员时间", Toast.LENGTH_SHORT).show();
+            return;
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(VipActivity.this);
         builder.setTitle("请确认支付");
         builder.setMessage(mess);
@@ -228,6 +231,7 @@ public class VipActivity extends BaseHuaActivity<TechPresenter> {
                 String commId = String.valueOf(comId);
                 boolean b = sp.getBoolean("b", false);
                 if (b){
+
                     int userId = sp.getInt("userId", -1);
                     String s=userId+commId+"tech";
                     String md5 = MD5Util.MD5(s);

@@ -163,7 +163,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     @Override
     protected void initView() {
         //隐藏标题
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         //滑动监听
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override

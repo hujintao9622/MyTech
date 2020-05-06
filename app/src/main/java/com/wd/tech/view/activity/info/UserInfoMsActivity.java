@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.presenter.TechPresenter;
-
+//
 public class UserInfoMsActivity extends BaseActivity<TechPresenter> {
 
     @Override

@@ -56,6 +56,14 @@ public class InfoItAdapter extends RecyclerView.Adapter<InfoItAdapter.MyViewHold
         }else {
             holder.red.setVisibility(View.GONE);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(resultBean.getFromUid(),resultBean.getFromHeadPic(),resultBean.getFromNickName());
+                }
+            }
+        });
     }
 
     @Override
@@ -78,5 +86,14 @@ public class InfoItAdapter extends RecyclerView.Adapter<InfoItAdapter.MyViewHold
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
+    }
+    OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public interface OnClickListener{
+        void onClick(int friendId,String head,String nickName);
     }
 }

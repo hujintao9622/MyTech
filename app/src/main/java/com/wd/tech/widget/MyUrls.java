@@ -86,6 +86,18 @@ public interface MyUrls {
     String BASE_DELETE_FRIENDINFO="techApi/chat/verify/v1/deleteChatRecord";
     //根据手机号
     String BASE_SEUSER_BYPHONE="techApi/user/verify/v1/findUserByPhone";
+    //查询好友信息
+    String BASE_FRIENDINFO_ID="techApi/user/verify/v1/queryFriendInformation";
+    //查询好友对话记录
+    String BASE_CHAT="techApi/chat/verify/v1/findDialogueRecordPageList";
+    //查询好友聊天记录
+    String BASE_CHATHISTORY="techApi/chat/verify/v1/findChatRecordPageList";
+    //发送消息
+    String BASE_SEND_MSG="techApi/chat/verify/v1/sendMessage";
+    //删除好友
+    String BASE_DELETE_FRIEND="techApi/chat/verify/v1/deleteFriendRelation";
+    //删除好友聊天记录
+    String BASE_DELETE_HISTORY="techApi/chat/verify/v1/deleteChatRecord";
 
     //社区
     //社区列表

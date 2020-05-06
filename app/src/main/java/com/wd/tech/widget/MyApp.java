@@ -10,6 +10,10 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.wd.tech.arc.Constants;
 
+import cn.jpush.im.android.api.JMessageClient;
+
+import static cn.jpush.im.android.api.JMessageClient.FLAG_NOTIFY_SILENCE;
+
 /**
  * date:2020/4/18 0018
  * author:胡锦涛(Administrator)
@@ -21,7 +25,7 @@ public class MyApp extends Application {
     public static Context getmContext() {
         return mContext;
     }
-
+    public static String s1="d4cf77f0d3b85e9edc540dee";
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,7 +33,11 @@ public class MyApp extends Application {
         registToWX();
         initArcFace();
         SlideFinishManager.getInstance().init(this);
-
+        //初始化极光
+        JMessageClient.init(this, true);
+        JMessageClient.setDebugMode(true);
+        //通知管理,通知栏开启，其他关闭
+        JMessageClient.setNotificationFlag(FLAG_NOTIFY_SILENCE);
     }
     private void registToWX() {
         //AppConst.WEIXIN.APP_ID是指你应用在微信开放平台上的AppID，记得替换。
