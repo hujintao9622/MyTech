@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:gravity="center"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <EditText
+    <TextView
         android:drawableLeft="@drawable/common_nav_btn_search_n_xxhdpi"
         android:drawablePadding="@dimen/dp_10"
         android:paddingLeft="@dimen/dp_10"
+        android:gravity="center_vertical"
         android:layout_width="@dimen/dp_300"
         android:background="@drawable/serch"
         android:layout_height="@dimen/dp_30"
@@ -19,8 +20,14 @@
             android:paddingLeft="@dimen/dp_10"
             android:drawablePadding="@dimen/dp_10"
             android:text="群组"
+            android:id="@+id/qunzu"
             android:gravity="center_vertical"
             android:drawableLeft="@drawable/nav_btn_setting_n_hdpi"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/qunrc"/>
     <ExpandableListView
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dp_10"

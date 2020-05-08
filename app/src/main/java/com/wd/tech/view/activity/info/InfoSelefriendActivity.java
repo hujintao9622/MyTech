@@ -1,83 +1,78 @@
 package com.wd.tech.view.activity.info;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
-import com.wd.tech.model.bean.info.InfoSeleFriendBean;
 import com.wd.tech.presenter.TechPresenter;
-import com.wd.tech.utils.NetUtil;
-import com.wd.tech.widget.MyUrls;
+import com.wd.tech.view.fragment.info.FindFriendFragment;
+import com.wd.tech.view.fragment.info.FindGroupFragment;
 
-import java.util.HashMap;
+import org.w3c.dom.ls.LSException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InfoSelefriendActivity extends BaseActivity<TechPresenter> {
+public class InfoSelefriendActivity extends BaseActivity{
+
 
     @BindView(R.id.comeback)
     ImageView comeback;
-    @BindView(R.id.query)
-    EditText query;
-    @BindView(R.id.head)
-    ImageView head;
-    @BindView(R.id.name)
-    TextView name;
-    @BindView(R.id.ll)
-    LinearLayout ll;
-    private String phone;
-
+    @BindView(R.id.tab)
+    TabLayout tab;
+    @BindView(R.id.vp)
+    ViewPager vp;
+    private List<String> stlist=new ArrayList<>();
+    private List<Fragment> fglist=new ArrayList<>();
     @Override
     protected void initData() {
+        stlist.clear();
+        fglist.clear();
+        stlist.add("找人");
+        stlist.add("找群");
+        fglist.add(new FindFriendFragment());
+        fglist.add(new FindGroupFragment());
+        vp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                return fglist.get(position);
+            }
 
+            @Override
+            public int getCount() {
+                return fglist.size();
+            }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return stlist.get(position);
+            }
+        });
+        tab.setupWithViewPager(vp);
     }
 
     @Override
     protected void initView() {
         getSupportActionBar().hide();
-        query.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String name = query.getText().toString().trim();
-                HashMap<String ,Object> map=new HashMap<>();
-                map.put("phone",name);
-                mPresenter.getDoParams(MyUrls.BASE_SEUSER_BYPHONE, InfoSeleFriendBean.class,map);
-            }
-        });
-        ll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InfoSelefriendActivity.this,UserInfoMsActivity.class);
-                intent.putExtra("phone",phone);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
     protected TechPresenter providePresenter() {
-        return new TechPresenter();
+        return null;
     }
 
     @Override
@@ -92,13 +87,7 @@ public class InfoSelefriendActivity extends BaseActivity<TechPresenter> {
 
     @Override
     public void onSuccess(Object o) {
-        if (o instanceof InfoSeleFriendBean&& TextUtils.equals("0000",((InfoSeleFriendBean) o).getStatus())){
-            InfoSeleFriendBean.ResultBean result = ((InfoSeleFriendBean) o).getResult();
-            String headPic = result.getHeadPic();
-            NetUtil.getInstance().getPhoto(headPic,head);
-            name.setText(result.getNickName());
-            phone = result.getPhone();
-        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.wd.tech.view.adapter.info;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
-import com.wd.tech.model.bean.info.FriendListBean;
+import com.wd.tech.model.bean.info.GroupListBean;
 import com.wd.tech.utils.NetUtil;
 
 import java.util.List;
@@ -18,37 +19,37 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * date:2020/4/23 0023
+ * date:2020/5/7 0007
  * author:胡锦涛(Administrator)
  * function:
  */
-public class FriendChildAdapter  extends RecyclerView.Adapter<FriendChildAdapter.ViewHolder>{
+public class GroupListAdapter extends RecyclerView.Adapter<GroupListAdapter.ViewHolder> {
 
-    private List<FriendListBean.ResultBean> list;
+    private List<GroupListBean.ResultBean> result;
 
-    public FriendChildAdapter(List<FriendListBean.ResultBean> child) {
+    public GroupListAdapter(List<GroupListBean.ResultBean> result) {
 
-        list = child;
+        this.result = result;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=View.inflate(parent.getContext(), R.layout.friend_child, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_all, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        FriendListBean.ResultBean resultBean = list.get(position);
-        NetUtil.getInstance().getPhoto(resultBean.getHeadPic(), holder.iv);
-        holder.name.setText(resultBean.getNickName());
-        holder.remark.setText(resultBean.getRemarkName());
+        GroupListBean.ResultBean resultBean = result.get(position);
+        String groupImage = resultBean.getGroupImage();
+        NetUtil.getInstance().getCiclePhoto(groupImage,holder.iv);
+        holder.name.setText(resultBean.getGroupName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onClickListener != null) {
-                    onClickListener.onClick(resultBean.getFriendUid(),resultBean.getHeadPic(),resultBean.getNickName());
+                    onClickListener.onClick(resultBean.getGroupId(),resultBean.getGroupName());
                 }
             }
         });
@@ -56,7 +57,7 @@ public class FriendChildAdapter  extends RecyclerView.Adapter<FriendChildAdapter
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return result.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,10 +65,6 @@ public class FriendChildAdapter  extends RecyclerView.Adapter<FriendChildAdapter
         ImageView iv;
         @BindView(R.id.name)
         TextView name;
-        @BindView(R.id.remark)
-        TextView remark;
-        @BindView(R.id.red)
-        ImageView red;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
@@ -80,6 +77,6 @@ public class FriendChildAdapter  extends RecyclerView.Adapter<FriendChildAdapter
     }
 
     public interface OnClickListener{
-        void onClick(int id,String head,String name);
+        void onClick(int id,String name);
     }
 }

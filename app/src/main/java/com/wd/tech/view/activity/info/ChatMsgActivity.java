@@ -2,9 +2,7 @@ package com.wd.tech.view.activity.info;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,12 +17,10 @@ import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.model.bean.info.ChatBean;
-import com.wd.tech.model.bean.info.ChatMsgBean;
 import com.wd.tech.model.bean.info.FriendInfoByIdBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.RsaCoder;
 import com.wd.tech.utils.RxPartMapUtils;
-import com.wd.tech.view.adapter.info.FriendSetActivity;
 import com.wd.tech.view.adapter.info.MsgAdapter;
 import com.wd.tech.widget.Msg;
 import com.wd.tech.widget.MyApp;
@@ -35,7 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.content.TextContent;
@@ -79,6 +74,8 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
         JMessageClient.registerEventReceiver(this);
         getSupportActionBar().hide();
         rc.setLayoutManager(new LinearLayoutManager(this));
+        msgAdapter = new MsgAdapter(list);
+        rc.setAdapter(msgAdapter);
         Intent intent = getIntent();
         if (intent != null) {
             id = intent.getIntExtra("id", -1);
@@ -129,7 +126,7 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
         //查看对话记录
         if (o instanceof ChatBean&& TextUtils.equals("0000",((ChatBean) o).getStatus())){
             List<ChatBean.ResultBean> result = ((ChatBean) o).getResult();
-            for (int i = 0; i < result.size(); i++) {
+            for (int i=result.size()-1; i>=0 ; i--) {
                 ChatBean.ResultBean resultBean = result.get(i);
                 int direction = resultBean.getDirection();
                 Msg.Message messa=null;
@@ -146,8 +143,7 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
                 }
                 list.add(messa);
             }
-            msgAdapter = new MsgAdapter(list);
-            rc.setAdapter(msgAdapter);
+
         }
         //发送消息
         if (o instanceof CommunityZanBean&&TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
@@ -186,7 +182,6 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }
                 break;
             case R.id.set:
@@ -202,7 +197,6 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
                 switch (message.getContentType()) {
                     case text:
                         TextContent textContent = (TextContent) message.getContent();

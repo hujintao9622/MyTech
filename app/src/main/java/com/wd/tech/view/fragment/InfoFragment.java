@@ -27,6 +27,7 @@ import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
 import com.wd.tech.model.bean.community.CommunityFlimBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.view.activity.info.CreateGroupActivity;
 import com.wd.tech.view.activity.info.InfoSelefriendActivity;
 import com.wd.tech.view.fragment.info.InfoItFragment;
 import com.wd.tech.view.fragment.info.LinkManFragment;
@@ -165,12 +166,16 @@ public class InfoFragment extends BaseFragment<TechPresenter> {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), InfoSelefriendActivity.class);
                 startActivity(intent);
+                popupWindow.dismiss();
             }
         });
         create_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2020/4/29 0029 创建群组
+                //创建群组
+                Intent intent = new Intent(getContext(), CreateGroupActivity.class);
+                startActivity(intent);
+                popupWindow.dismiss();
             }
         });
         //是否具有获取焦点的能力

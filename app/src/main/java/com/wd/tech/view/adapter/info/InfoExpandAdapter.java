@@ -117,6 +117,14 @@ public class InfoExpandAdapter extends BaseExpandableListAdapter {
         friendChildAdapter = new FriendChildAdapter(child);
         cViewHolder.nameRc.setAdapter(friendChildAdapter);
         friendChildAdapter.notifyDataSetChanged();
+        friendChildAdapter.setOnClickListener(new FriendChildAdapter.OnClickListener() {
+            @Override
+            public void onClick(int id, String head, String name) {
+                if (childClickListener != null) {
+                    childClickListener.onChildClick(id,head,name);
+                }
+            }
+        });
         return convertView;
     }
 
@@ -154,5 +162,14 @@ public class InfoExpandAdapter extends BaseExpandableListAdapter {
         CViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
+    }
+    ChildClickListener childClickListener;
+
+    public void setChildClickListener(ChildClickListener childClickListener) {
+        this.childClickListener = childClickListener;
+    }
+
+    public interface ChildClickListener{
+        void onChildClick(int id,String head,String name);
     }
 }

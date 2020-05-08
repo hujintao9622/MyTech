@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.adapter.info.FriendSetActivity">
+    tools:context=".view.activity.info.FriendSetActivity">
     <ImageView
         android:layout_width="@dimen/dp_24"
         android:layout_height="@dimen/dp_24"

@@ -98,6 +98,22 @@ public interface MyUrls {
     String BASE_DELETE_FRIEND="techApi/chat/verify/v1/deleteFriendRelation";
     //删除好友聊天记录
     String BASE_DELETE_HISTORY="techApi/chat/verify/v1/deleteChatRecord";
+    //创建群聊
+    String BASE_CREATE_GROUP="techApi/group/verify/v1/createGroup";
+    //查询所有加入的群组
+    String BASE_ALLGROUPS="techApi/group/verify/v1/findUserJoinedGroup";
+    //查看群组聊天记录
+    String BASE_GROUP_HISTORY="techApi/group/verify/v1/findGroupChatRecordPage";
+    //查询群组详细信息
+    String BASE_GROUP_DETAILS="techApi/group/verify/v1/findGroupInfo";
+    //退出群组
+    String BASE_BACK_GROUP="techApi/group/verify/v1/retreat";
+    //解散群组
+    String BASE_DELETE_GROUP="techApi/group/verify/v1/disbandGroup";
+    //修改群简介
+    String BASE_UPDATE_JIANJIE="techApi/group/verify/v1/modifyGroupDescription";
+    //申请进群
+    String BASE_ADD_GROUP="techApi/group/verify/v1/applyAddGroup";
 
     //社区
     //社区列表

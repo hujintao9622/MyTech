@@ -4,16 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
-import com.wd.tech.model.bean.info.ChatBean;
 import com.wd.tech.utils.NetUtil;
-import com.wd.tech.utils.RsaCoder;
 import com.wd.tech.widget.Msg;
 
 import java.util.List;
@@ -24,14 +21,14 @@ import butterknife.ButterKnife;
 /**
  * date:2020/4/28 0028
  * author:胡锦涛(Administrator)
- * function:
+ * function:群组聊天
  */
-public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
+public class GroupChatAdapter extends RecyclerView.Adapter<GroupChatAdapter.ViewHolder> {
 
 
     private List<Msg.Message> list;
 
-    public MsgAdapter(List<Msg.Message> list) {
+    public GroupChatAdapter(List<Msg.Message> list) {
 
         this.list = list;
     }

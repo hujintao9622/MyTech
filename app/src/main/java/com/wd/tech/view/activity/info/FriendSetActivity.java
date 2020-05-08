@@ -1,4 +1,4 @@
-package com.wd.tech.view.adapter.info;
+package com.wd.tech.view.activity.info;
 
 import android.content.Intent;
 import android.os.Bundle;

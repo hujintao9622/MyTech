@@ -107,7 +107,6 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
                     }
                 }
             });
-
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("headPic", resultBean.getHeadPic());
             editor.putString("nickName", resultBean.getNickName());
