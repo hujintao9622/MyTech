@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent"
     tools:context=".view.activity.info.UserInfoMsActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_260"
+        android:src="@drawable/userinfoback"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_50"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp_14"
+        android:id="@+id/write"
+        android:text="编辑"/>
+    <ImageView
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginTop="@dimen/dp_200"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/head"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:layout_marginTop="@dimen/dp_210"
+        android:layout_marginLeft="@dimen/dp_230"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fen"
+        android:layout_marginTop="@dimen/dp_210"
+        android:layout_toRightOf="@id/name"/>
+    <ImageView
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_236"
+        android:background="@drawable/vpi"
+        android:id="@+id/vpi"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/dp_260"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/content"
+        android:layout_marginTop="@dimen/dp_300"
+        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_400">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---------个人资料---------"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/birthDay"
+            android:text="女(1995-02-16)"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/phone"
+            android:text="132****6490"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/email"
+            android:text="sfasdfs@163.com"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/style_login_btn"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/bt"
+        android:text="发消息"/>
+</RelativeLayout>

@@ -74,8 +74,7 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
         JMessageClient.registerEventReceiver(this);
         getSupportActionBar().hide();
         rc.setLayoutManager(new LinearLayoutManager(this));
-        msgAdapter = new MsgAdapter(list);
-        rc.setAdapter(msgAdapter);
+
         Intent intent = getIntent();
         if (intent != null) {
             id = intent.getIntExtra("id", -1);
@@ -143,11 +142,12 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
                 }
                 list.add(messa);
             }
-
+            msgAdapter = new MsgAdapter(list);
+            rc.setAdapter(msgAdapter);
         }
         //发送消息
         if (o instanceof CommunityZanBean&&TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
-            Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+
         }
     }
 

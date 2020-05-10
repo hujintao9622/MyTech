@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.info.AddGroupActivity"></activity>
-        <activity android:name=".view.adapter.info.GroupGuanLiActivity" />
+        <activity android:name=".view.activity.info.InviteActivity"></activity>
+        <activity android:name=".view.activity.info.GroupHumanActivity" />
+        <activity android:name=".view.activity.info.AddFriendActivity" />
+        <activity android:name=".view.activity.info.InformActivity" />
+        <activity android:name=".view.activity.info.AddGroupActivity" />
         <activity android:name=".view.activity.info.UpdateDesionActivity" />
         <activity android:name=".view.activity.info.GroupSetActivity" />
         <activity android:name=".view.activity.info.GroupChatActivity" />
@@ -65,11 +68,11 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="com.wd.tech.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />

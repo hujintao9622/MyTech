@@ -4,12 +4,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
@@ -62,6 +68,9 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
     private SharedPreferences sp;
     private int userId;
     private int id;
+    private String name;
+    private int tag=0;
+    private PopupWindow mPopWindow;
 
     @Override
     protected void initData() {
@@ -103,19 +112,21 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
         if (o instanceof GroupDetailsBean && TextUtils.equals("0000", ((GroupDetailsBean) o).getStatus())) {
             GroupDetailsBean.ResultBean result = ((GroupDetailsBean) o).getResult();
             int ownerUid = result.getOwnerUid();
+            name = result.getGroupName();
             //是否是群主
             if (ownerUid == userId) {//是群主
                 noName.setVisibility(View.GONE);
                 noMain.setVisibility(View.GONE);
                 doMain.setVisibility(View.VISIBLE);
-                doName.setText(result.getGroupName());
+                doName.setText(name);
                 doNum.setText("共"+result.getCurrentCount()+"人");
                 NetUtil.getInstance().getPhoto(result.getGroupImage(),head);
             } else {//不是群主
+                tag=1;
                 noName.setVisibility(View.VISIBLE);
                 noMain.setVisibility(View.VISIBLE);
                 doMain.setVisibility(View.GONE);
-                noName.setText(result.getGroupName());
+                noName.setText(name);
                 noNum.setText("共"+result.getCurrentCount()+"人");
                 NetUtil.getInstance().getPhoto(result.getGroupImage(),head);
             }
@@ -134,15 +145,21 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
                 break;
             case R.id.no_chengyuan:
             case R.id.do_chengyuan:
+            case R.id.do_guanli:
+                //群管理/群成员
+                Intent guanli = new Intent(this,GroupHumanActivity.class);
+                guanli.putExtra("id",id);
+                guanli.putExtra("tag",tag);
+                startActivity(guanli);
                 break;
             case R.id.no_tongzhi:
             case R.id.do_tongzhi:
+                //群通知
+                startActivity(this,InformActivity.class);
                 break;
             case R.id.no_bt:
                 //退出群组
-                HashMap<String,Object> map=new HashMap<>();
-                map.put("groupId",id);
-                mPresenter.dltDoParams(MyUrls.BASE_BACK_GROUP, CommunityZanBean.class,map);
+                showPopupWindow(id,1,name);
                 break;
             case R.id.do_name:
                 break;
@@ -152,18 +169,75 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
                 intent.putExtra("id",id);
                 startActivity(intent);
                 break;
-            case R.id.do_guanli:
-                //群管理
-                Intent guanli = new Intent(this,UpdateDesionActivity.class);
-                guanli.putExtra("id",id);
-                startActivity(guanli);
-                break;
             case R.id.do_bt:
                 //解散群
-                HashMap<String,Object> map1=new HashMap<>();
-                map1.put("groupId",id);
-                mPresenter.dltDoParams(MyUrls.BASE_DELETE_GROUP, CommunityZanBean.class,map1);
+                showPopupWindow(id,0,name);
                 break;
         }
+    }
+    //弹出框
+    private void showPopupWindow(int id,int tag,String nickName) {
+        //加载布局
+        View view = LayoutInflater.from(this).inflate(R.layout.popclear, null);
+        mPopWindow = new PopupWindow(view,
+                ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        mPopWindow.setContentView(view);
+        //设置各个控件的点击响应
+        TextView dl = view.findViewById(R.id.dl);
+        TextView title = view.findViewById(R.id.title);
+        TextView cancel = view.findViewById(R.id.cancel);
+        if (tag==0){//解散群
+            title.setText("你将解散"+nickName+"群?");
+            dl.setText("确定");
+            dl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HashMap<String,Object> map1=new HashMap<>();
+                    map1.put("groupId",id);
+                    mPresenter.dltDoParams(MyUrls.BASE_DELETE_GROUP, CommunityZanBean.class,map1);
+                    mPopWindow.dismiss();
+                }
+            });
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPopWindow.dismiss();//让PopupWindow消失
+                }
+            });
+        }else if (tag==1){//退出群
+            title.setText("你将退出"+nickName+"群?");
+            dl.setText("确定");
+            dl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HashMap<String,Object> map=new HashMap<>();
+                    map.put("groupId",id);
+                    mPresenter.dltDoParams(MyUrls.BASE_BACK_GROUP, CommunityZanBean.class,map);
+                    mPopWindow.dismiss();
+                }
+            });
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPopWindow.dismiss();//让PopupWindow消失
+                }
+            });
+        }
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (mPopWindow != null && mPopWindow.isShowing()) {
+                    mPopWindow.dismiss();
+                    mPopWindow = null;
+                }
+                return false;
+            }
+        });
+
+        //是否具有获取焦点的能力
+        mPopWindow.setFocusable(true);
+        //显示PopupWindow
+        View rootview = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+        mPopWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
 }

@@ -17,6 +17,8 @@
         <EditText
             android:layout_width="@dimen/dp_260"
             android:layout_marginLeft="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_20"
+            android:background="@drawable/plback"
             android:layout_height="@dimen/dp_40"
             android:id="@+id/query"
             android:hint="根据群Id查询" />
@@ -26,6 +28,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:id="@+id/ll"
+        android:gravity="center_vertical"
         android:layout_marginTop="@dimen/dp_20"
         android:layout_height="wrap_content">
         <ImageView

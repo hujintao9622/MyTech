@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context=".view.activity.info.InviteActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -21,7 +26,7 @@
             android:paddingLeft="@dimen/dp_20"
             android:background="@drawable/plback"
             android:id="@+id/query"
-            android:hint="根据手机号查询" />
+            android:hint="输入好友Id" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,4 +48,12 @@
             android:layout_marginLeft="@dimen/dp_20"
             />
     </LinearLayout>
+    <Button
+        android:layout_width="@dimen/dp_260"
+        android:id="@+id/bt"
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/style_login_btn"
+        android:layout_marginTop="@dimen/dp_200"
+        android:textColor="@color/colorWhite"
+        android:text="邀请进群"/>
 </LinearLayout>

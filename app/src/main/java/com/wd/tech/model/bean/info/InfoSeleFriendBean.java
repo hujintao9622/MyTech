@@ -8,7 +8,7 @@ package com.wd.tech.model.bean.info;
 public class InfoSeleFriendBean {
 
     /**
-     * result : {"email":"999@163.com","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2018-09-30/20180930093918.jpg","integral":0,"nickName":"江山","phone":"16619998889","sex":1,"signature":"打江山","userId":1078,"whetherVip":2,"whetherFaceId":1}
+     * result : {"birthday":823190400000,"email":"1145886822@qq.com","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png","integral":10,"nickName":"诗和远方","phone":"18532186702","sex":1,"signature":"剑与远征","userId":1372,"userName":"q60Anb18532186702","whetherFaceId":2,"whetherVip":2}
      * message : 查询成功
      * status : 0000
      */
@@ -43,18 +43,21 @@ public class InfoSeleFriendBean {
 
     public static class ResultBean {
         /**
-         * email : 999@163.com
-         * headPic : http://mobile.bwstudent.com/images/tech/head_pic/2018-09-30/20180930093918.jpg
-         * integral : 0
-         * nickName : 江山
-         * phone : 16619998889
+         * birthday : 823190400000
+         * email : 1145886822@qq.com
+         * headPic : http://mobile.bwstudent.com/images/tech/head_pic/2020-04-17/20200417200148.png
+         * integral : 10
+         * nickName : 诗和远方
+         * phone : 18532186702
          * sex : 1
-         * signature : 打江山
-         * userId : 1078
+         * signature : 剑与远征
+         * userId : 1372
+         * userName : q60Anb18532186702
+         * whetherFaceId : 2
          * whetherVip : 2
-         * whetherFaceId : 1
          */
 
+        private long birthday;
         private String email;
         private String headPic;
         private int integral;
@@ -63,8 +66,17 @@ public class InfoSeleFriendBean {
         private int sex;
         private String signature;
         private int userId;
-        private int whetherVip;
+        private String userName;
         private int whetherFaceId;
+        private int whetherVip;
+
+        public long getBirthday() {
+            return birthday;
+        }
+
+        public void setBirthday(long birthday) {
+            this.birthday = birthday;
+        }
 
         public String getEmail() {
             return email;
@@ -130,12 +142,12 @@ public class InfoSeleFriendBean {
             this.userId = userId;
         }
 
-        public int getWhetherVip() {
-            return whetherVip;
+        public String getUserName() {
+            return userName;
         }
 
-        public void setWhetherVip(int whetherVip) {
-            this.whetherVip = whetherVip;
+        public void setUserName(String userName) {
+            this.userName = userName;
         }
 
         public int getWhetherFaceId() {
@@ -144,6 +156,14 @@ public class InfoSeleFriendBean {
 
         public void setWhetherFaceId(int whetherFaceId) {
             this.whetherFaceId = whetherFaceId;
+        }
+
+        public int getWhetherVip() {
+            return whetherVip;
+        }
+
+        public void setWhetherVip(int whetherVip) {
+            this.whetherVip = whetherVip;
         }
     }
 }

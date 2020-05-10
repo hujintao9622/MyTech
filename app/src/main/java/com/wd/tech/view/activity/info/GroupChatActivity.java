@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
@@ -20,6 +21,7 @@ import com.wd.tech.model.bean.info.GroupHistoryBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.RsaCoder;
 import com.wd.tech.utils.RxPartMapUtils;
+import com.wd.tech.view.adapter.info.GroupChatAdapter;
 import com.wd.tech.view.adapter.info.MsgAdapter;
 import com.wd.tech.widget.Msg;
 import com.wd.tech.widget.MyApp;
@@ -52,10 +54,11 @@ public class GroupChatActivity extends BaseActivity<TechPresenter> {
     int page=1;
     private SharedPreferences sp;
     private List<Msg.Message> list=new ArrayList<>();
-    private MsgAdapter msgAdapter;
     private int id;
     private String headPic;
     private String myName;
+    private GroupChatAdapter groupChatAdapter;
+
     @Override
     protected void initData() {
 
@@ -78,8 +81,7 @@ public class GroupChatActivity extends BaseActivity<TechPresenter> {
             map.put("count",10);
             mPresenter.getDoParams(MyUrls.BASE_GROUP_HISTORY, GroupHistoryBean.class,map);
         }
-        msgAdapter = new MsgAdapter(list);
-        rc.setAdapter(msgAdapter);
+        rc.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -118,7 +120,8 @@ public class GroupChatActivity extends BaseActivity<TechPresenter> {
                 }
                 list.add(messa);
             }
-
+            groupChatAdapter = new GroupChatAdapter(list);
+            rc.setAdapter(groupChatAdapter);
         }
     }
 
@@ -153,7 +156,7 @@ public class GroupChatActivity extends BaseActivity<TechPresenter> {
                         //Message message = JMessageClient.createSingleTextMessage(id, MyApp.s1,context);
                         //JMessageClient.sendMessage(message);
                         list.add(messa);
-                        msgAdapter.notifyItemInserted(list.size() - 1);
+                        groupChatAdapter.notifyItemInserted(list.size() - 1);
                         rc.scrollToPosition(list.size() - 1);
                         cont.setText("");
                     } catch (Exception e) {

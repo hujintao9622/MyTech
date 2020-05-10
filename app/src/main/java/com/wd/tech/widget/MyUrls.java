@@ -114,6 +114,22 @@ public interface MyUrls {
     String BASE_UPDATE_JIANJIE="techApi/group/verify/v1/modifyGroupDescription";
     //申请进群
     String BASE_ADD_GROUP="techApi/group/verify/v1/applyAddGroup";
+    //群通知
+    String BASE_GROUP_NOTICE="techApi/group/verify/v1/findGroupNoticePageList";
+    //审核群申请
+    String BASE_AUDIT="techApi/group/verify/v1/reviewGroupApply";
+    //检测是否是我的好友
+    String BASE_ISFRIEND="techApi/chat/verify/v1/checkMyFriend";
+    //添加好友
+    String BASE_ADD_FRIEND="techApi/chat/verify/v1/addFriend";
+    //查询群组所有用户
+    String BASE_QUERY_ALLUSERS="techApi/group/verify/v1/findGroupMemberList";
+    //调整群成员角色
+    String BASE_UPDATE_GROUP="techApi/group/verify/v1/modifyPermission";
+    //移除群成员
+    String BASE_DETELE_GROUPUSER="techApi/group/verify/v1/removeGroupMember";
+    //邀请加群
+    String BASE_INVITE_GROUP="techApi/group/verify/v1/inviteAddGroup";
 
     //社区
     //社区列表

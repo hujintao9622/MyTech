@@ -19,7 +19,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+//修改群简介
 public class UpdateDesionActivity extends BaseHuaActivity<TechPresenter> {
     @BindView(R.id.post)
     TextView post;

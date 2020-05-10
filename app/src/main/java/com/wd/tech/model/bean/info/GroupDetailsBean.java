@@ -1,11 +1,13 @@
 package com.wd.tech.model.bean.info;
 
+import java.io.Serializable;
+
 /**
  * date:2020/5/8 0008
  * author:胡锦涛(Administrator)
  * function:群详情
  */
-public class GroupDetailsBean {
+public class GroupDetailsBean{
 
     /**
      * result : {"currentCount":1,"description":"","groupId":1228,"groupImage":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","groupName":"我曾向往星空","hxGroupId":"43462109","maxCount":10,"ownerUid":1372}

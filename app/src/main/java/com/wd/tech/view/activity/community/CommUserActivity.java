@@ -141,7 +141,6 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
         }
         if (o instanceof CommUserBean&& TextUtils.equals("0000",((CommUserBean) o).getStatus())){
             List<CommUserBean.ResultBean> result = ((CommUserBean) o).getResult();
-
             CommUserAdapter adapter = new CommUserAdapter(result.get(0).getCommunityUserPostVoList());
             adapter.setOnClickListener(new CommUserAdapter.OnClickListener() {
                 @Override

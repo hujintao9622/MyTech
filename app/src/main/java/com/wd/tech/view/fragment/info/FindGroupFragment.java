@@ -45,6 +45,7 @@ public class FindGroupFragment extends BaseFragment<TechPresenter> {
 
     @Override
     protected void initView(View view) {
+        ll.setVisibility(View.GONE);
     }
 
     @Override
@@ -70,6 +71,7 @@ public class FindGroupFragment extends BaseFragment<TechPresenter> {
     @Override
     public void onSuccess(Object o) {
         if (o instanceof GroupDetailsBean && TextUtils.equals("0000", ((GroupDetailsBean) o).getStatus())) {
+            ll.setVisibility(View.VISIBLE);
             GroupDetailsBean.ResultBean result = ((GroupDetailsBean) o).getResult();
             NetUtil.getInstance().getCiclePhoto(result.getGroupImage(), head);
             name.setText(result.getGroupName());

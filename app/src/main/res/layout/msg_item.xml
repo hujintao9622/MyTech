@@ -20,13 +20,12 @@
             android:layout_marginLeft="@dimen/dp_56"
             android:id="@+id/left_name"/>
         <TextView
-            android:background="@drawable/left"
+            android:background="@drawable/you"
             android:id="@+id/left_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_56"
-            android:layout_marginTop="@dimen/dp_20"
-            android:textColor="#fff"/>
+            android:layout_marginTop="@dimen/dp_20" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -46,7 +45,7 @@
             android:id="@+id/right_name"/>
         <TextView
             android:id="@+id/right_msg"
-            android:background="@drawable/right"
+            android:background="@drawable/me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

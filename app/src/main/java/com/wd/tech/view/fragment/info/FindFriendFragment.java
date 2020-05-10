@@ -45,7 +45,7 @@ public class FindFriendFragment extends BaseFragment<TechPresenter> {
 
     @Override
     protected void initView(View view) {
-
+        ll.setVisibility(View.GONE);
     }
 
     @Override
@@ -71,6 +71,7 @@ public class FindFriendFragment extends BaseFragment<TechPresenter> {
     @Override
     public void onSuccess(Object o) {
         if (o instanceof InfoSeleFriendBean && TextUtils.equals("0000", ((InfoSeleFriendBean) o).getStatus())) {
+            ll.setVisibility(View.VISIBLE);
             InfoSeleFriendBean.ResultBean result = ((InfoSeleFriendBean) o).getResult();
             String headPic = result.getHeadPic();
             NetUtil.getInstance().getPhoto(headPic, head);

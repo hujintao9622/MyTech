@@ -24,8 +24,8 @@ import butterknife.ButterKnife;
 /**
  * date:2020/4/28 0028
  * author:胡锦涛(Administrator)
- * function:
- */
+ * function:聊天
+ * */
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
 
 

@@ -39,8 +39,6 @@ import butterknife.OnClick;
  * function:
  */
 public class LinkManFragment extends BaseFragment<TechPresenter> {
-    @BindView(R.id.query)
-    TextView query;
     @BindView(R.id.linkManRc)
     ExpandableListView linkManRc;
     @BindView(R.id.qunrc)
@@ -58,8 +56,7 @@ public class LinkManFragment extends BaseFragment<TechPresenter> {
         qunRc.setLayoutManager(new LinearLayoutManager(getContext()));
         //查询所有分组
         mPresenter.getNoParams(MyUrls.BASE_FIND_ALLGROUP, FriendGroupBean.class);
-        //查询所有群组
-        mPresenter.getNoParams(MyUrls.BASE_ALLGROUPS, GroupListBean.class);
+
     }
 
     @Override
@@ -147,15 +144,14 @@ public class LinkManFragment extends BaseFragment<TechPresenter> {
 
     }
 
-    @OnClick({R.id.query, R.id.qunzu})
+    @OnClick({ R.id.qunzu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.query:
-                break;
             case R.id.qunzu:
                 isClosed=!isClosed;
                 if (isClosed){
                     //查询所有群组
+                    mPresenter.getNoParams(MyUrls.BASE_ALLGROUPS, GroupListBean.class);
                     qunRc.setVisibility(View.VISIBLE);
                 }else {
                     qunRc.setVisibility(View.GONE);
