@@ -51,6 +51,8 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
     private int id;
     private String nickName;
     int tag=-1;
+    private String headPic;
+
     @Override
     protected void initData() {
 
@@ -88,7 +90,7 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
         //好友信息
         if (o instanceof FriendInfoByIdBean&& TextUtils.equals("0000",((FriendInfoByIdBean) o).getStatus())){
             FriendInfoByIdBean.ResultBean result = ((FriendInfoByIdBean) o).getResult();
-            String headPic = result.getHeadPic();
+            headPic = result.getHeadPic();
             nickName = result.getNickName();
             String userName = result.getUserName();
             NetUtil.getInstance().getCiclePhoto(headPic,head);
@@ -99,8 +101,10 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
         if (o instanceof CommunityZanBean&&TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
             if (tag==0){//清空记录
                 Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, FriendSetActivity.class);
-                intent.putExtra("id",id);
+                Intent intent = new Intent(this, ChatMsgActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("head", headPic);
+                intent.putExtra("name", nickName);
                 startActivity(intent);
             }
             if (tag==1){

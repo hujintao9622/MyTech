@@ -18,7 +18,7 @@
         android:textSize="@dimen/sp_16"
         android:layout_marginTop="@dimen/dp_20"
         android:layout_centerHorizontal="true"
-        android:text="群通知"/>
+        android:text="好友通知"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"

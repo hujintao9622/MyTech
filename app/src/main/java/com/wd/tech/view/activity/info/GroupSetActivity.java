@@ -141,7 +141,10 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.comeBack:
-                finish();
+                Intent intent1 = new Intent(this, GroupChatActivity.class);
+                intent1.putExtra("id",id);
+                intent1.putExtra("name",name);
+                startActivity(intent1);
                 break;
             case R.id.no_chengyuan:
             case R.id.do_chengyuan:

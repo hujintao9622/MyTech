@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
+import com.wd.tech.base.BaseHuaActivity;
 import com.wd.tech.model.bean.my.IntegralRecordBean;
 import com.wd.tech.model.bean.my.UserIntegralBean;
 import com.wd.tech.presenter.TechPresenter;
@@ -20,8 +21,8 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-public class MyIntegralActivity extends BaseActivity<TechPresenter> {
+//积分
+public class MyIntegralActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.tv_my_integral_amount)
     TextView tvMyIntegralAmount;
