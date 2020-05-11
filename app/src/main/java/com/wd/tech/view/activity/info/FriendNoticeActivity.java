@@ -14,6 +14,7 @@ import com.wd.tech.model.bean.community.CommunityZanBean;
 import com.wd.tech.model.bean.info.FriendNoticeBean;
 import com.wd.tech.model.bean.info.GroupNoticeBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.view.activity.information.MainActivity;
 import com.wd.tech.view.adapter.info.FriendNoticeAdapter;
 import com.wd.tech.view.adapter.info.GroupNoticeAdapter;
 import com.wd.tech.widget.MyUrls;
@@ -105,6 +106,7 @@ public class FriendNoticeActivity extends BaseActivity<TechPresenter> {
 
     @OnClick(R.id.comeBack)
     public void onViewClicked() {
+        startActivity(this, MainActivity.class);
         finish();
     }
 }

@@ -49,7 +49,6 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.iv_title)
     ImageView ivTitle;
-
     @BindView(R.id.swrc)
     SwipeMenuRecyclerView swrc;
     @BindView(R.id.rc)
@@ -57,6 +56,9 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
     private int uid;
     private Dialog dialog;
     private CommUser0Bean.ResultBean.CommunityUserVoBean communityUserVo;
+    String fol=null;
+    String frd=null;
+    private UserFollowAdapter followAdapter;
 
     @Override
     protected void initData() {
@@ -101,7 +103,7 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
         if (o instanceof CommUser0Bean&&TextUtils.equals("0000",((CommUser0Bean) o).getStatus())){
             List<CommUser0Bean.ResultBean> result = ((CommUser0Bean) o).getResult();
             communityUserVo = result.get(0).getCommunityUserVo();
-            UserFollowAdapter followAdapter = new UserFollowAdapter(communityUserVo);
+            followAdapter = new UserFollowAdapter(communityUserVo);
             followAdapter.setOnClickListener(new UserFollowAdapter.OnClickListener() {
                 @Override
                 public void onClick(String headpic) {
@@ -109,21 +111,33 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
                     dialog.show();
                 }
             });
+            int whetherFollow = communityUserVo.getWhetherFollow();
+            int whetherMyFriend = communityUserVo.getWhetherMyFriend();
+            if (whetherFollow==1){//已关注
+                fol="已关注";
+            }else {
+                fol="未关注";
+            }
+            if (whetherMyFriend==1){//是好友
+                frd="已是好友";
+            }else {
+                frd="+好友";
+            }
             //添加侧滑按钮
             swrc.setSwipeMenuCreator(new SwipeMenuCreator() {
                     @Override
                     public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
                         SwipeMenuItem addFriendItem = new SwipeMenuItem(CommUserActivity.this)
                                 .setBackground(R.drawable.blue)
-                                .setText("+好友")
-                                .setHeight(60)//设置高，这里使用match_parent，就是与item的高相同
-                                .setWidth(100);//设置宽
+                                .setText(frd)
+                                .setHeight(ViewGroup.LayoutParams.MATCH_PARENT)//设置高，这里使用match_parent，就是与item的高相同
+                                .setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);//设置宽
                         swipeRightMenu.addMenuItem(addFriendItem);//设置右边的侧滑
                         SwipeMenuItem deleteItem = new SwipeMenuItem(CommUserActivity.this)
                                 .setBackground(R.drawable.red)
-                                .setText("+关注")
-                                .setHeight(60)
-                                .setWidth(100);//设置宽
+                                .setText(fol)
+                                .setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
+                                .setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);//设置宽
                         swipeRightMenu.addMenuItem(deleteItem);
                     }
                 });
@@ -133,7 +147,25 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
                     public void onItemClick(SwipeMenuBridge menuBridge) {
                         //不关闭可能导致菜单错乱
                         menuBridge.closeMenu();
+                        int adapterPosition = menuBridge.getAdapterPosition();
+                        int position = menuBridge.getPosition();
                         int userId = CommUserActivity.this.communityUserVo.getUserId();
+                        if (position==0){//加好友
+                            if (whetherMyFriend==2){
+                                HashMap<String,Object> map=new HashMap<>();
+                                map.put("friendUid",uid);
+                                map.put("remark","");
+                                mPresenter.postDoParams(MyUrls.BASE_ADD_FRIEND, CommunityZanBean.class,map);
+                            }
+                        }else {//关注
+                            HashMap<String,Object>map=new HashMap<>();
+                            map.put("focusId",uid);
+                            if (whetherFollow==1){//取消关注
+                                mPresenter.dltDoParams(MyUrls.BASE_CANCEL_FOLLOW_USER,CommunityZanBean.class,map);
+                            }else {//加关注BASE_FOLLOW_USER
+                                mPresenter.postDoParams(MyUrls.BASE_FOLLOW_USER,CommunityZanBean.class,map);
+                            }
+                        }
                     }
                 });
             swrc.setAdapter(followAdapter);
@@ -181,6 +213,7 @@ public class CommUserActivity extends BaseHuaActivity<TechPresenter> {
         }
         //点赞取消赞
         if (o instanceof CommunityZanBean && TextUtils.equals("0000", ((CommunityZanBean) o).getStatus())) {
+            followAdapter.notifyDataSetChanged();
             Toast.makeText(CommUserActivity.this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
             HashMap<String, Object> map = new HashMap<>();
             map.put("fromUid", uid);

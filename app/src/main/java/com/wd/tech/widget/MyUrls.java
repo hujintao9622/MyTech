@@ -152,5 +152,8 @@ public interface MyUrls {
     String BASE_FILM="techApi/community/verify/v1/addCommunityComment";
     //查询用户帖子
     String BASE_USER_COM="techApi/community/verify/v1/findUserPostById";
-
+    //关注用户
+    String BASE_FOLLOW_USER="techApi/user/verify/v1/addFollow";
+    //取消关注
+    String BASE_CANCEL_FOLLOW_USER="techApi/user/verify/v1/cancelFollow";
 }
