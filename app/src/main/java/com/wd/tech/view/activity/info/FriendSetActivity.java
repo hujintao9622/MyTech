@@ -50,7 +50,7 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
     private PopupWindow mPopWindow;
     private int id;
     private String nickName;
-
+    int tag=-1;
     @Override
     protected void initData() {
 
@@ -95,6 +95,18 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
             name.setText(nickName);
             bei.setText(userName);
         }
+        //好友操作
+        if (o instanceof CommunityZanBean&&TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
+            if (tag==0){//清空记录
+                Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, FriendSetActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+            if (tag==1){
+                Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
@@ -109,10 +121,12 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
                 finish();
                 break;
             case R.id.clear:
-                showPopupWindow(id,0,nickName);
+                tag=0;
+                showPopupWindow(id,tag,nickName);
                 break;
             case R.id.delete:
-                showPopupWindow(id,1,nickName);
+                tag=1;
+                showPopupWindow(id,tag,nickName);
                 break;
         }
     }

@@ -89,6 +89,7 @@ public class InviteActivity extends BaseHuaActivity<TechPresenter> {
         //邀请好友
         if (o instanceof CommunityZanBean&&TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
             Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

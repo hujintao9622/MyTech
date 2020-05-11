@@ -197,12 +197,10 @@ public class UserInfoMsActivity extends BaseHuaActivity<TechPresenter> {
 
     }
 
-    @OnClick({R.id.write, R.id.bt})
+    @OnClick({R.id.write})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.write:
-                break;
-            case R.id.bt:
                 break;
         }
     }

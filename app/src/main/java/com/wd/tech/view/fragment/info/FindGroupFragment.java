@@ -9,9 +9,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wd.tech.R;
 import com.wd.tech.base.BaseFragment;
+import com.wd.tech.model.bean.info.CheckFriendBean;
 import com.wd.tech.model.bean.info.GroupDetailsBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.NetUtil;
@@ -77,6 +79,17 @@ public class FindGroupFragment extends BaseFragment<TechPresenter> {
             name.setText(result.getGroupName());
             id=result.getGroupId();
         }
+        //加群
+        if (o instanceof CheckFriendBean&&TextUtils.equals("0000",((CheckFriendBean) o).getStatus())){
+            int flag = ((CheckFriendBean) o).getFlag();
+            if (flag==1){
+                Toast.makeText(getContext(), ((CheckFriendBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+            }else if (flag==2){
+                Intent intent = new Intent(getContext(), AddGroupActivity.class);
+                intent.putExtra("id",this.id);
+                startActivity(intent);
+            }
+        }
     }
 
     @Override
@@ -95,10 +108,10 @@ public class FindGroupFragment extends BaseFragment<TechPresenter> {
                 mPresenter.getDoParams(MyUrls.BASE_GROUP_DETAILS, GroupDetailsBean.class, map);
                 break;
             case R.id.ll:
-                //申请加群
-                Intent intent = new Intent(getContext(), AddGroupActivity.class);
-                intent.putExtra("id",this.id);
-                startActivity(intent);
+                //是否在群内
+                HashMap<String,Object> ma=new HashMap<>();
+                ma.put("groupId",this.id);
+                mPresenter.getDoParams(MyUrls.BASE_IS_INGROUP, CheckFriendBean.class,ma);
                 break;
         }
     }

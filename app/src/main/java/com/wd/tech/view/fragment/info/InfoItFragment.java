@@ -22,6 +22,7 @@ import com.wd.tech.model.bean.info.FriendListBean;
 import com.wd.tech.model.bean.info.FriendNoticeBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.activity.info.ChatMsgActivity;
+import com.wd.tech.view.activity.info.FriendNoticeActivity;
 import com.wd.tech.view.adapter.InfoItAdapter;
 import com.wd.tech.widget.MyUrls;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
@@ -83,38 +84,11 @@ public class InfoItFragment extends BaseFragment<TechPresenter> {
                 infoItAdapter.setOnClickListener(new InfoItAdapter.OnClickListener() {
                     @Override
                     public void onClick(int friendId,String head,String nickName) {
-                        Intent intent = new Intent(getContext(), ChatMsgActivity.class);
-                        intent.putExtra("id",friendId);
-                        intent.putExtra("head",head);
-                        intent.putExtra("name",nickName);
+                        Intent intent = new Intent(getContext(), FriendNoticeActivity.class);
                         startActivity(intent);
                     }
                 });
-                ifitRc.setSwipeMenuCreator(new SwipeMenuCreator() {
-                    @Override
-                    public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
-                        @SuppressLint("ResourceType") SwipeMenuItem deleteItem = new SwipeMenuItem(getContext())
-                                .setBackground(R.drawable.red)
-                                .setText("删除")
-                                .setHeight(ViewGroup.LayoutParams.MATCH_PARENT)//设置高，这里使用match_parent，就是与item的高相同
-                                .setWidth(70);//设置宽
-                        swipeRightMenu.addMenuItem(deleteItem);//设置右边的侧滑
-                    }
-                });
-                ifitRc.setSwipeMenuItemClickListener(new SwipeMenuItemClickListener() {
-                    @Override
-                    public void onItemClick(SwipeMenuBridge menuBridge) {
-                        menuBridge.closeMenu();
-                        int adapterPosition = menuBridge.getAdapterPosition();
-                        int fromUid = result.get(adapterPosition).getFromUid();
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("fromUid",fromUid);
-                        mPresenter.dltDoParams(MyUrls.BASE_DELETE_FRIENDINFO, CommunityZanBean.class,map);
-                        result.remove(adapterPosition);
-                        infoItAdapter.notifyDataSetChanged();
 
-                    }
-                });
                 ifitRc.setAdapter(infoItAdapter);
             }
         }

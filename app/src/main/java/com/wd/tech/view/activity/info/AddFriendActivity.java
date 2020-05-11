@@ -80,6 +80,7 @@ public class AddFriendActivity extends BaseActivity<TechPresenter> {
     public void onSuccess(Object o) {
         if (o instanceof CommunityZanBean&& TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
             Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

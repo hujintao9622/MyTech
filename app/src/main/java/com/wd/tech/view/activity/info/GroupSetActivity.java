@@ -118,7 +118,7 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
                 noName.setVisibility(View.GONE);
                 noMain.setVisibility(View.GONE);
                 doMain.setVisibility(View.VISIBLE);
-                doName.setText(name);
+                doName.setText(name+"("+result.getGroupId()+")");
                 doNum.setText("共"+result.getCurrentCount()+"人");
                 NetUtil.getInstance().getPhoto(result.getGroupImage(),head);
             } else {//不是群主
@@ -126,7 +126,7 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
                 noName.setVisibility(View.VISIBLE);
                 noMain.setVisibility(View.VISIBLE);
                 doMain.setVisibility(View.GONE);
-                noName.setText(name);
+                noName.setText(name+"("+result.getGroupId()+")");
                 noNum.setText("共"+result.getCurrentCount()+"人");
                 NetUtil.getInstance().getPhoto(result.getGroupImage(),head);
             }
@@ -145,11 +145,19 @@ public class GroupSetActivity extends BaseActivity<TechPresenter> {
                 break;
             case R.id.no_chengyuan:
             case R.id.do_chengyuan:
+                //群成员
+                Intent cy = new Intent(this,GroupHumanActivity.class);
+                cy.putExtra("id",id);
+                cy.putExtra("tag",tag);
+                cy.putExtra("sta",1);
+                startActivity(cy);
+                break;
             case R.id.do_guanli:
-                //群管理/群成员
+                //群管理
                 Intent guanli = new Intent(this,GroupHumanActivity.class);
                 guanli.putExtra("id",id);
                 guanli.putExtra("tag",tag);
+                guanli.putExtra("sta",2);
                 startActivity(guanli);
                 break;
             case R.id.no_tongzhi:

@@ -184,7 +184,7 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
                     }
                 }
                 break;
-            case R.id.set:
+            case R.id.set://好友设置
                 Intent intent = new Intent(this, FriendSetActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);

@@ -1,12 +1,8 @@
 package com.wd.tech.view.fragment.info;
 
 import android.content.Intent;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -21,7 +17,6 @@ import com.wd.tech.model.bean.info.GroupListBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.activity.info.ChatMsgActivity;
 import com.wd.tech.view.activity.info.GroupChatActivity;
-import com.wd.tech.view.adapter.info.FriendGroupAdapter;
 import com.wd.tech.view.adapter.info.GroupListAdapter;
 import com.wd.tech.view.adapter.info.InfoExpandAdapter;
 import com.wd.tech.widget.MyUrls;
@@ -46,7 +41,6 @@ public class LinkManFragment extends BaseFragment<TechPresenter> {
     @BindView(R.id.qunzu)
     TextView qunzu;
     boolean isClosed=false;
-    private FriendGroupAdapter friendGroupAdapter;
     private int positio = -1;
     List<FriendGroupBean.ResultBean> group = new ArrayList<>();
     private InfoExpandAdapter adapter;

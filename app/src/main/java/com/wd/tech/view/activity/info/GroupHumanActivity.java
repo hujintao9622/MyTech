@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -42,6 +43,8 @@ public class GroupHumanActivity extends BaseActivity<TechPresenter> {
     ImageView comeBack;
     @BindView(R.id.add)
     ImageView add;
+    @BindView(R.id.title)
+    TextView title;
     @BindView(R.id.qunzhu)
     SwipeMenuRecyclerView qunzhu;
     @BindView(R.id.qunguanli)
@@ -65,6 +68,12 @@ public class GroupHumanActivity extends BaseActivity<TechPresenter> {
         if (intent != null) {
             id = intent.getIntExtra("id", -1);
             tag = intent.getIntExtra("tag", -1);
+            int sta = intent.getIntExtra("sta", -1);
+            if (sta==1){
+                title.setText("群成员");
+            }else {
+                title.setText("群管理");
+            }
             HashMap<String, Object> map = new HashMap<>();
             map.put("groupId", id);
             mPresenter.getDoParams(MyUrls.BASE_QUERY_ALLUSERS, GroupAllUserListBean.class, map);
@@ -217,12 +226,15 @@ public class GroupHumanActivity extends BaseActivity<TechPresenter> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.comeBack:
-                finish();
-                break;
-            case R.id.add://邀请进群
-                Intent intent = new Intent(GroupHumanActivity.this,InviteActivity.class);
+                //群组设置
+                Intent intent = new Intent(this,GroupSetActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
+                break;
+            case R.id.add://邀请进群
+                Intent intent1 = new Intent(GroupHumanActivity.this,InviteActivity.class);
+                intent1.putExtra("id",id);
+                startActivity(intent1);
                 break;
         }
     }

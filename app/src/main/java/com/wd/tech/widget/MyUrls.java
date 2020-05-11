@@ -72,6 +72,8 @@ public interface MyUrls {
     String FIND_USER_INTEGRAL_RECORD = "techApi/user/verify/v1/findUserIntegralRecord";
     // 我的任务列表
     String USER_TASK_LIST = "techApi/user/verify/v1/findUserTaskList";
+    //删除帖子
+    String DELETE_POST = "techApi/community/verify/v1/deletePost";
 
     //消息
     //查询好友通知
@@ -130,6 +132,10 @@ public interface MyUrls {
     String BASE_DETELE_GROUPUSER="techApi/group/verify/v1/removeGroupMember";
     //邀请加群
     String BASE_INVITE_GROUP="techApi/group/verify/v1/inviteAddGroup";
+    //是否在群内
+    String BASE_IS_INGROUP="techApi/group/verify/v1/whetherInGroup";
+    //审核好友
+    String BASE_REVIEW_FRIEND="techApi/chat/verify/v1/reviewFriendApply";
 
     //社区
     //社区列表
