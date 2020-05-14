@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,16 +23,20 @@ import androidx.viewpager.widget.ViewPager;
 import com.bumptech.glide.Glide;
 import com.wd.tech.R;
 import com.wd.tech.base.BaseActivity;
+import com.wd.tech.model.bean.my.FindSingRecordingBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.activity.login.LoginActivity;
 import com.wd.tech.view.activity.my.CollectActivity;
 import com.wd.tech.view.activity.my.MyIntegralActivity;
+import com.wd.tech.view.activity.my.NoticeActivity;
 import com.wd.tech.view.activity.my.SheActivity;
 import com.wd.tech.view.activity.my.UserTaskActivity;
 import com.wd.tech.view.fragment.CommunityFragment;
 import com.wd.tech.view.fragment.ConsultFragment;
 import com.wd.tech.view.fragment.InfoFragment;
+import com.wd.tech.widget.MyUrls;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -232,10 +237,14 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     }
 
 
-    @OnClick({R.id.login_iv, R.id.login, R.id.she, R.id.shou, R.id.guan, R.id.tie, R.id.tong, R.id.ji, R.id.ren})
+    @OnClick({R.id.login_iv, R.id.login, R.id.she, R.id.shou, R.id.guan, R.id.tie, R.id.tong, R.id.ji, R.id.ren, R.id.qian})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_iv:
+
+            case R.id.qian:
+                startActivity(this, SignActivity.class);
+                break;
             case R.id.login:
                 startActivity(this, LoginActivity.class);
                 finish();
@@ -252,6 +261,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
                 startActivity(this, TieziActivity.class);
                 break;
             case R.id.tong:
+                startActivity(this, NoticeActivity.class);
                 break;
             case R.id.ji:
                 startActivity(this, MyIntegralActivity.class);

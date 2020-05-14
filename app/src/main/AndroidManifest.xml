@@ -2,76 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.wd.tech">
-
-    <application
-        android:name=".widget.MyApp"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.login.StartActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".view.activity.info.InviteActivity" />
-        <activity android:name=".view.activity.info.GroupHumanActivity" />
-        <activity android:name=".view.activity.info.AddFriendActivity" />
-        <activity android:name=".view.activity.info.InformActivity" />
-        <activity android:name=".view.activity.info.AddGroupActivity" />
-        <activity android:name=".view.activity.info.UpdateDesionActivity" />
-        <activity android:name=".view.activity.info.GroupSetActivity" />
-        <activity android:name=".view.activity.info.GroupChatActivity" />
-        <activity android:name=".view.activity.info.CreateGroupActivity" />
-        <activity android:name=".view.activity.info.FriendSetActivity" />
-        <activity android:name=".view.activity.info.ChatMsgActivity" />
-        <activity android:name=".view.activity.info.UserInfoMsActivity" />
-        <activity android:name=".view.activity.info.InfoSelefriendActivity" />
-        <activity android:name=".view.activity.info.FriendNoticeActivity"/>
-        <activity android:name=".view.activity.information.PlateActivity" />
-        <activity android:name=".view.activity.information.PlatesActivity" />
-        <activity android:name=".base.IActivity" />
-        <activity android:name=".view.activity.information.SearchActivity" />
-        <activity android:name=".view.activity.information.VipActivity" />
-        <activity android:name=".view.activity.community.CommUserActivity" />
-        <activity android:name=".view.activity.community.WriteFilmActivity" />
-        <activity android:name=".view.activity.community.WritePostActivity" />
-        <activity android:name=".view.activity.information.DetailsActivity" />
-        <activity android:name=".view.activity.information.IntegralActivity" />
-        <activity android:name=".view.activity.information.TieziActivity" />
-        <activity android:name=".view.activity.my.SheActivity" />
-        <activity android:name=".view.activity.my.CollectActivity" />
-        <activity android:name=".view.activity.my.MyIntegralActivity" />
-        <activity android:name=".view.activity.my.UserTaskActivity" />
-        <activity android:name=".view.activity.login.RegisterActivity" />
-        <activity android:name=".view.activity.login.LoginActivity" />
-        <activity
-            android:name=".view.activity.information.MainActivity"
-            android:theme="@style/PicActivity">
-
-        </activity>
-        <activity android:name=".arc.LivenessActivity" />
-
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="d4cf77f0d3b85e9edc540dee" />
-
-        <service
-            android:name="cn.jpush.android.service.PushService"
-            android:process=":multiprocess"
-            tools:node="replace" />
-        <service
-            android:name=".view.activity.info.SendService"
-            android:process=":pushcore">
-            <intent-filter>
-                <action android:name="cn.jiguang.user.service.action" />
-            </intent-filter>
-        </service>
-    </application> <!-- Optional. Required for location feature -->
+    <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -97,7 +28,76 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:name=".widget.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.my.NoticeActivity"></activity>
+        <activity android:name=".view.activity.information.SignActivity" />
+        <activity android:name=".view.activity.login.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activity.info.InviteActivity" />
+        <activity android:name=".view.activity.info.GroupHumanActivity" />
+        <activity android:name=".view.activity.info.AddFriendActivity" />
+        <activity android:name=".view.activity.info.InformActivity" />
+        <activity android:name=".view.activity.info.AddGroupActivity" />
+        <activity android:name=".view.activity.info.UpdateDesionActivity" />
+        <activity android:name=".view.activity.info.GroupSetActivity" />
+        <activity android:name=".view.activity.info.GroupChatActivity" />
+        <activity android:name=".view.activity.info.CreateGroupActivity" />
+        <activity android:name=".view.activity.info.FriendSetActivity" />
+        <activity android:name=".view.activity.info.ChatMsgActivity" />
+        <activity android:name=".view.activity.info.UserInfoMsActivity" />
+        <activity android:name=".view.activity.info.InfoSelefriendActivity" />
+        <activity android:name=".view.activity.info.FriendNoticeActivity" />
+        <activity android:name=".view.activity.information.PlateActivity" />
+        <activity android:name=".view.activity.information.PlatesActivity" />
+        <activity android:name=".base.IActivity" />
+        <activity android:name=".view.activity.information.SearchActivity" />
+        <activity android:name=".view.activity.information.VipActivity" />
+        <activity android:name=".view.activity.community.CommUserActivity" />
+        <activity android:name=".view.activity.community.WriteFilmActivity" />
+        <activity android:name=".view.activity.community.WritePostActivity" />
+        <activity android:name=".view.activity.information.DetailsActivity" />
+        <activity android:name=".view.activity.information.IntegralActivity" />
+        <activity android:name=".view.activity.information.TieziActivity" />
+        <activity android:name=".view.activity.my.SheActivity" />
+        <activity android:name=".view.activity.my.CollectActivity" />
+        <activity android:name=".view.activity.my.MyIntegralActivity" />
+        <activity android:name=".view.activity.my.UserTaskActivity" />
+        <activity android:name=".view.activity.login.RegisterActivity" />
+        <activity android:name=".view.activity.login.LoginActivity" />
+        <activity
+            android:name=".view.activity.information.MainActivity"
+            android:theme="@style/PicActivity" />
+        <activity android:name=".arc.LivenessActivity" />
+
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="d4cf77f0d3b85e9edc540dee" />
+
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:process=":multiprocess"
+            tools:node="replace" />
+        <service
+            android:name=".view.activity.info.SendService"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+    </application>
 
 </manifest>
