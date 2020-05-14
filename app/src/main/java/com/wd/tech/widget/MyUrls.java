@@ -70,10 +70,22 @@ public interface MyUrls {
     String FIND_USER_INTEGRAL = "techApi/user/verify/v1/findUserIntegral";
     // 查询用户积分明细
     String FIND_USER_INTEGRAL_RECORD = "techApi/user/verify/v1/findUserIntegralRecord";
+    //做任务
+    String DO_TASK = "user/verify/v1/doTheTask";
     // 我的任务列表
     String USER_TASK_LIST = "techApi/user/verify/v1/findUserTaskList";
+    // 我的通知
+    String NOTICE_LIST = "techApi/chat/verify/v1/findFriendNoticePageList";
     //删除帖子
     String DELETE_POST = "techApi/community/verify/v1/deletePost";
+    // 用户签到功能
+    String USER_SIGN = "user/verify/v1/userSign";
+    // 查询当天签到状态
+    String FIND_USER_SIGN = "user/verify/v1/findUserSignStatus";
+    // 查询用户当月所有签到的日期
+    String FIND_RECORDING = "user/verify/v1/findUserSignRecording";
+    // 查询用户连续签到天数
+    String SIGN_DAY = "user/verify/v1/findContinuousSignDays";
 
     //消息
     //查询好友通知

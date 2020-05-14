@@ -122,14 +122,14 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
                 tvDetailsSource.setText(((DetailsBean) o).getResult().getSource());
                 Glide.with(this).load(((DetailsBean) o).getResult().getThumbnail()).into(imgDetailsThumbnail);
                 if (!TextUtils.isEmpty(((DetailsBean) o).getResult().getContent())) {
-                    if (((DetailsBean) o).getResult().getReadPower() == 2) {
+                    if (((DetailsBean) o).getResult().getReadPower() == 1) {
                         // 有权限查看
                         Document document = Jsoup.parseBodyFragment(((DetailsBean) o).getResult().getContent());
                         String text = document.text();
                         tvDetailsContent.setText(text);
                         imgNoPay.setVisibility(View.GONE);
                         btnNoPay.setVisibility(View.GONE);
-                    } else if (((DetailsBean) o).getResult().getReadPower() == 1) {
+                    } else if (((DetailsBean) o).getResult().getReadPower() == 2) {
                         // 没有权限查看
                         tvDetailsContent.setMaxLines(12);
                         tvDetailsContent.setEllipsize(TextUtils.TruncateAt.END);
@@ -153,7 +153,6 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
                 } else {
                     rvDetailsInformationList.setVisibility(View.GONE);
                 }
-
             }
         }
         if (o instanceof CommentBean) {
