@@ -21,6 +21,7 @@ import com.wd.tech.model.bean.info.GroupHistoryBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.utils.RsaCoder;
 import com.wd.tech.utils.RxPartMapUtils;
+import com.wd.tech.view.activity.information.MainActivity;
 import com.wd.tech.view.adapter.info.GroupChatAdapter;
 import com.wd.tech.view.adapter.info.MsgAdapter;
 import com.wd.tech.widget.Msg;
@@ -133,13 +134,14 @@ public class GroupChatActivity extends BaseActivity<TechPresenter> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.comeBack:
-                finish();
+                startActivity(this, MainActivity.class);
                 break;
             case R.id.set:
                 //群组设置
                 Intent intent = new Intent(this,GroupSetActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.send:
                 //发送消息

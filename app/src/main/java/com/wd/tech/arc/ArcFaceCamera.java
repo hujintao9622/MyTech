@@ -138,9 +138,9 @@ public class ArcFaceCamera implements SurfaceHolder.Callback {
                         Rect rect1= DrawUtils.adjustRect(rect, previewSizeX, previewSizeY,
                                 canvas.getWidth(), canvas.getHeight(), cameraOri, cameraId);
                         if (rect1.right < previewSizeX - 100) {
-                            canvas.drawText("张三", rect1.right + 30, rect1.bottom, paint);
+                            //canvas.drawText("张三", rect1.right + 30, rect1.bottom, paint);
                         } else {
-                            canvas.drawText("张三", rect1.left - 30, rect1.bottom, paint);
+                            //canvas.drawText("张三", rect1.left - 30, rect1.bottom, paint);
                         }
 
                     }
