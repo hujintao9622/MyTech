@@ -126,7 +126,6 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
                 rvInfoRecommend.setLayoutManager(new LinearLayoutManager(MyApp.mContext, RecyclerView.VERTICAL, false));
                 RecommendAdapter recommendAdapter = new RecommendAdapter(R.layout.item_recommend, recommendList);
                 rvInfoRecommend.setAdapter(recommendAdapter);
-
                 recommendAdapter.setOnItemClickListene(new RecommendAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(int tag, int id,int position) {

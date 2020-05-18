@@ -37,7 +37,6 @@ public interface ApiService {
     @Multipart
     Observable<ResponseBody> postDoHeadPic(@Url String url, @Part MultipartBody.Part img);
     @POST //post无参
-    @FormUrlEncoded
     Observable<ResponseBody> postNoParams(@Url String url);
     @POST //post有参
     @FormUrlEncoded

@@ -79,13 +79,17 @@ public interface MyUrls {
     //删除帖子
     String DELETE_POST = "techApi/community/verify/v1/deletePost";
     // 用户签到功能
-    String USER_SIGN = "user/verify/v1/userSign";
+    String USER_SIGN = "techApi/user/verify/v1/userSign";
     // 查询当天签到状态
-    String FIND_USER_SIGN = "user/verify/v1/findUserSignStatus";
+    String FIND_USER_SIGN = "techApi/user/verify/v1/findUserSignStatus";
     // 查询用户当月所有签到的日期
-    String FIND_RECORDING = "user/verify/v1/findUserSignRecording";
+    String FIND_RECORDING = "techApi/user/verify/v1/findUserSignRecording";
     // 查询用户连续签到天数
-    String SIGN_DAY = "user/verify/v1/findContinuousSignDays";
+    String SIGN_DAY = "techApi/user/verify/v1/findContinuousSignDays";
+    // 用户关注列表
+    String FOLLOW_LIST = "techApi/user/verify/v1/findFollowUserList";
+    // 资讯用户评论
+    String ADD_COMMENT = "techApi/information/verify/v1/addInfoComment";
 
     //消息
     //查询好友通知

@@ -2,26 +2,28 @@ package com.wd.tech.view.activity.information;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.wd.tech.R;
-import com.wd.tech.base.BaseActivity;
 import com.wd.tech.base.BaseHuaActivity;
-import com.wd.tech.contract.TechContract;
 import com.wd.tech.model.bean.information.CommentBean;
 import com.wd.tech.model.bean.information.DetailsBean;
+import com.wd.tech.model.bean.information.PingBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.adapter.info.CommentAdapter;
 import com.wd.tech.view.adapter.info.InfoListAdapter;
@@ -38,8 +40,9 @@ import java.util.Date;
 import java.util.HashMap;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
+public class DetailsActivity extends BaseHuaActivity<TechPresenter> {
 
     @BindView(R.id.tv_details_title)
     TextView tvDetailsTitle;
@@ -61,6 +64,8 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
     ImageView imgNoPay;
     @BindView(R.id.btn_no_pay)
     Button btnNoPay;
+    @BindView(R.id.ed_details_ping)
+    EditText edDetailsPing;
     private PopupWindow mPopupWindow;
     private View contentView;
     private ImageView imgPop;
@@ -88,7 +93,20 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
 
     @Override
     protected void initData() {
-
+        edDetailsPing.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    String ping = edDetailsPing.getText().toString();
+                    HashMap<String, Object> params = new HashMap<>();
+                    params.put("infoId", id);
+                    params.put("content", ping);
+                    mPresenter.postDoParams(MyUrls.ADD_COMMENT, PingBean.class, params);
+                    edDetailsPing.setText("");
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -108,6 +126,11 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
 
     @Override
     public void onSuccess(Object o) {
+        if (o instanceof PingBean) {
+            if (((PingBean) o).getStatus().equals("0000")) {
+                Toast.makeText(this, ((PingBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
         if (o instanceof DetailsBean) {
             if (((DetailsBean) o).getStatus().equals("0000")) {
                 result = ((DetailsBean) o).getResult();
@@ -122,14 +145,14 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
                 tvDetailsSource.setText(((DetailsBean) o).getResult().getSource());
                 Glide.with(this).load(((DetailsBean) o).getResult().getThumbnail()).into(imgDetailsThumbnail);
                 if (!TextUtils.isEmpty(((DetailsBean) o).getResult().getContent())) {
-                    if (((DetailsBean) o).getResult().getReadPower() == 1) {
+                    if (((DetailsBean) o).getResult().getReadPower() == 2) {
                         // 有权限查看
                         Document document = Jsoup.parseBodyFragment(((DetailsBean) o).getResult().getContent());
                         String text = document.text();
                         tvDetailsContent.setText(text);
                         imgNoPay.setVisibility(View.GONE);
                         btnNoPay.setVisibility(View.GONE);
-                    } else if (((DetailsBean) o).getResult().getReadPower() == 2) {
+                    } else if (((DetailsBean) o).getResult().getReadPower() == 1) {
                         // 没有权限查看
                         tvDetailsContent.setMaxLines(12);
                         tvDetailsContent.setEllipsize(TextUtils.TruncateAt.END);
@@ -147,7 +170,7 @@ public class DetailsActivity extends BaseHuaActivity<TechPresenter>{
                 } else {
                     rvDetailsPlate.setVisibility(View.GONE);
                 }
-                if (!(((DetailsBean) o).getResult().getInformationList()== null)) {
+                if (!(((DetailsBean) o).getResult().getInformationList() == null)) {
                     rvDetailsInformationList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
                     rvDetailsInformationList.setAdapter(new InfoListAdapter(R.layout.item_details_info_list, infoList));
                 } else {

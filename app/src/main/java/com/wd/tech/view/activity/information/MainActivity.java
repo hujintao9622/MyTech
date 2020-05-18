@@ -27,6 +27,7 @@ import com.wd.tech.model.bean.my.FindSingRecordingBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.activity.login.LoginActivity;
 import com.wd.tech.view.activity.my.CollectActivity;
+import com.wd.tech.view.activity.my.FollowActivity;
 import com.wd.tech.view.activity.my.MyIntegralActivity;
 import com.wd.tech.view.activity.my.NoticeActivity;
 import com.wd.tech.view.activity.my.SheActivity;
@@ -242,7 +243,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
         switch (view.getId()) {
             case R.id.login_iv:
 
-            case R.id.qian:
+            case R.id.qian:// 签到
                 startActivity(this, SignActivity.class);
                 break;
             case R.id.login:
@@ -256,6 +257,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
                 startActivity(this, CollectActivity.class);
                 break;
             case R.id.guan:
+                startActivity(this, FollowActivity.class);
                 break;
             case R.id.tie:
                 startActivity(this, TieziActivity.class);
