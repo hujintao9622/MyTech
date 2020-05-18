@@ -188,6 +188,7 @@ public class ChatMsgActivity extends BaseActivity<TechPresenter> {
                 Intent intent = new Intent(this, FriendSetActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
+                finish();
                 break;
         }
     }

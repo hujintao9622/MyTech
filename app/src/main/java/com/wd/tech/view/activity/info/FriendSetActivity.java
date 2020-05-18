@@ -106,6 +106,7 @@ public class FriendSetActivity extends BaseActivity<TechPresenter> {
                 intent.putExtra("head", headPic);
                 intent.putExtra("name", nickName);
                 startActivity(intent);
+                finish();
             }
             if (tag==1){
                 Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
