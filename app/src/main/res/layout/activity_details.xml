@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.information.DetailsActivity">
-    <ScrollView
+    <com.wd.tech.arc.FScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -59,9 +59,7 @@
                 android:layout_marginLeft="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_12"
                 android:layout_marginTop="@dimen/dp_10"
-                android:lineHeight="@dimen/dp_16"
-                android:textSize="@dimen/sp_12"
-                android:justificationMode="inter_word" />
+                android:textSize="@dimen/sp_12"></TextView>
 
             <ImageView
                 android:id="@+id/img_no_pay"
@@ -137,7 +135,7 @@
                     android:layout_marginRight="@dimen/dp_12" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </com.wd.tech.arc.FScrollView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

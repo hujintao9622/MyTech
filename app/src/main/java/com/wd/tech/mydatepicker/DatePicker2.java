@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wd.tech.R;
-import com.wd.tech.api.MyApp;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
